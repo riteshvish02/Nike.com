@@ -11,6 +11,7 @@ body
 }
 #main{
     position: relative;
+
 }
 
 img{
@@ -25,6 +26,7 @@ img{
    top: 0;
    pointer-events: none;
    position: fixed;
+   /* background: #000; */
    z-index: 1;
 }
 
@@ -50,18 +52,65 @@ img{
  width: 100%;
  height: 100%;
 }
+#page1 #clouds #cldimg1{
+    /* float: right; */
+    top: 0%!important;
+    right: 0%;
+    height: 80% ;
+    position: absolute;
+}
+#page1 #clouds #cldimg3{
+    /* float: right; */
+    top: 0%!important;
+    left: 0%;
+    /* height: 80% ; */
+    position: absolute;
+}
+#page1 #clouds #cldimg2{
+    /* float: right; */
+    bottom: 0%!important;
+    left: 0%;
+    /* height: 80% ; */
+    position: absolute;
+}
 
+#page1 #clouds #cldimg4{
+    /* float: right; */
+    bottom: 0%!important;
+    right: 0%;
+    /* height: 80% ; */
+    position: absolute;
+}
 #page1 #clouds img{
     /* background: #000; */
 }
-#page1 #clouds #cldimg2{
-    right: 0%!important;
-}
+
 
 #page2{
     width: 100%;
     height: 100vh;
-    background-color: red;
+    /* background-color: #000;    */
+    background-image: url('../static/assets/clouds/cloud-light-1.webp');
+    background-size: cover;
+    background-position: center;
     position: relative!important;
     z-index: 9999999999!important;
 }
+#page2 #clds1{
+left: -10%;
+top: -50%;
+position: absolute;
+}
+
+#page2 #clds2{
+    left: 50%;
+    top: -50%;
+    position: absolute;
+}
+
+#page2 #clds3{
+    left: 10%;
+    top: -50%;
+    position: absolute;
+}
+

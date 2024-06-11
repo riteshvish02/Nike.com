@@ -40,16 +40,51 @@ gltfLoader.load(
         model = gltf.scene
          
         console.log(gltf);
-        gltf.scene.position.set(0,0,0)
-        gltf.scene.scale.set(2,2,2)
-        gltf.scene.rotation.set(0,Math.PI/2,0)
+        gltf.scene.position.set(0,-2,0)
+        gltf.scene.scale.set(3,3,3)
+        gltf.scene.rotation.set(-Math.PI/2,Math.PI/2,0)
         scene.add(gltf.scene)
             gsap.to(gltf.scene.position,{
-                y:"0.06",
-                duration:1,
+                // y:"0.03",
+                duration:1.2,
                 yoyo:true,
                 repeat:-1,
             })
+
+            let tl = gsap.timeline({
+                scrollTrigger:{
+                    scroller:"#main",
+                    trigger:"#page1",
+                    start:"top 0%",
+                    end:"bottom 0%",
+                    markers:true,
+                    scrub:true,
+                }
+            })
+            tl
+            .to(gltf.scene.position,{
+                y:0,
+                delay:-1,
+            },"r")
+            tl.to(gltf.scene.rotation,{
+                x:0,
+                duration:1,
+                delay:0.05
+            },"r")
+            tl.to(gltf.scene.rotation,{
+                y:5,
+                duration:1.5,
+                delay:0.05
+            },"v")
+            tl.to(gltf.scene.scale,{
+                x:4,
+                y:4,
+                z:4,
+                duration:1.5,
+                delay:0.05
+            },"v")
+            
+            
 
             //helper
             gui.add(gltf.scene.position,'x').min(0).max(8).step(0.2).name('shoePositionX')
@@ -73,7 +108,12 @@ gltfLoader.load(
  */
 // Debug
 const gui = new dat.GUI({width:400,height:1000})
+var guiDom = gui.domElement;
 
+// Position the GUI panel
+guiDom.style.position = 'absolute'; // Set the position to absolute
+guiDom.style.top = '10px';          // Distance from the top of the screen
+guiDom.style.left = '10px';  
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
 
