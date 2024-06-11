@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body
+{ width: 100%;
+    height: 100%;
+}
+#main{
+    position: relative;
+}
+
+img{
+    object-fit: cover;
+    object-position: center;
+}
+.webgl
+{
+   width: 100%;
+   height: 100vh;
+   /* position: absolute;  */
+   top: 0;
+   pointer-events: none;
+   position: fixed;
+   z-index: 1;
+}
+
+#page1{
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    position: relative;
+    background-size: cover;
+    background-image: url('../static/assets/clouds/cloud-light-2.webp');
+}
+#page1 #mountain{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 99999;
+}
+#page1 #clouds{
+ position: absolute;
+ z-index: 8888;
+ width: 100%;
+ height: 100%;
+}
+
+#page1 #clouds img{
+    /* background: #000; */
+}
+#page1 #clouds #cldimg2{
+    right: 0%!important;
+}
+
+#page2{
+    width: 100%;
+    height: 100vh;
+    background-color: red;
+    position: relative!important;
+    z-index: 9999999999!important;
+}
