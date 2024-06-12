@@ -44,45 +44,76 @@ gltfLoader.load(
         gltf.scene.scale.set(3,3,3)
         gltf.scene.rotation.set(-Math.PI/2,Math.PI/2,0)
         scene.add(gltf.scene)
-            gsap.to(gltf.scene.position,{
-                // y:"0.03",
-                duration:1.2,
-                yoyo:true,
-                repeat:-1,
-            })
+            // gsap.to(gltf.scene.position,{
+            //     y:"",
+            //     duration:1.2,
+            //     yoyo:true,
+            //     repeat:-1,
+            // })
 
-            let tl = gsap.timeline({
+            // let tl1 = gsap.timeline({
+            //     scrollTrigger:{
+            //         scroller:"#main",
+            //         trigger:"#page1",
+            //         start:"top 0%",
+            //         end:"bottom 50%",
+            //         markers:true,
+            //         scrub:true,
+            //         pin:true,
+            //     }
+            // })
+            // tl1.to("#mount1",{
+            //     x:-420,
+            //     onComplete:()=>{
+            //         console.log("hello");
+            //         shoeanimate()
+            //     }
+            // })
+
+           
+            
+           function shoeanimate(){
+            let tl2 = gsap.timeline({
                 scrollTrigger:{
                     scroller:"#main",
                     trigger:"#page1",
                     start:"top 0%",
-                    end:"bottom 0%",
+                    end:"bottom -100%",
                     markers:true,
                     scrub:true,
+                    pin:true
                 }
             })
-            tl
-            .to(gltf.scene.position,{
+            tl2.to("#mount1",{
+                x:-420,
+                duration:1.5,
+            },"var")
+            tl2.to("#mount2",{
+                x:420,
+                duration:1.5,
+            },"var")
+            tl2.to(gltf.scene.position,{
                 y:0,
-                delay:-1,
-            },"r")
-            tl.to(gltf.scene.rotation,{
+            },"var")
+            tl2.to(gltf.scene.rotation,{
                 x:0,
                 duration:1,
                 delay:0.05
-            },"r")
-            tl.to(gltf.scene.rotation,{
+            },"var")
+            tl2.to(gltf.scene.rotation,{
                 y:5,
                 duration:1.5,
                 delay:0.05
-            },"v")
-            tl.to(gltf.scene.scale,{
+            },"var2")
+            tl2.to(gltf.scene.scale,{
                 x:4,
                 y:4,
                 z:4,
                 duration:1.5,
                 delay:0.05
-            },"v")
+            },"var2")
+           }
+           shoeanimate()
             
             
 
