@@ -1,4 +1,3 @@
-import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
@@ -6,6 +5,7 @@ import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
+import './style.css'
 
 const gltfLoader = new GLTFLoader()
 
@@ -46,35 +46,18 @@ gltfLoader.load(
         gltf.scene.scale.set(initialScale,initialScale,initialScale)
         gltf.scene.rotation.set(-Math.PI/2,Math.PI/2,0)
         scene.add(gltf.scene)
-            // gsap.to(gltf.scene.position,{
-            //     y:"",
-            //     duration:1.2,
-            //     yoyo:true,
-            //     repeat:-1,
-            // })
-
-            // let tl1 = gsap.timeline({
-            //     scrollTrigger:{
-            //         scroller:"#main",
-            //         trigger:"#page1",
-            //         start:"top 0%",
-            //         end:"bottom 50%",
-            //         markers:true,
-            //         scrub:true,
-            //         pin:true,
-            //     }
-            // })
-            // tl1.to("#mount1",{
-            //     x:-420,
-            //     onComplete:()=>{
-            //         console.log("hello");
-            //         shoeanimate()
-            //     }
-            // })
-
-           
+        
+        shoeanimate()
+       
+        //    updateModelScale()
             
-           function shoeanimate(){
+
+                 
+    },
+    
+)
+
+    function shoeanimate(){
             let tl2 = gsap.timeline({
                 scrollTrigger:{
                     scroller:"body",
@@ -86,28 +69,25 @@ gltfLoader.load(
                     pin:true
                 }
             })
-            tl2.to("#mount1",{
-                x:-420,
+            tl2.to("#page1",{
+                backgroundColor:"red",
                 duration:1.5,
             },"var")
-            tl2.to("#mount2",{
-                x:420,
-                duration:1.5,
-            },"var")
-            tl2.to(gltf.scene.position,{
+           
+            tl2.to(model.position,{
                 y:0,
             },"var")
-            tl2.to(gltf.scene.rotation,{
+            tl2.to(model.rotation,{
                 x:0,
                 duration:1,
                 delay:0.05
             },"var")
-            tl2.to(gltf.scene.rotation,{
+            tl2.to(model.rotation,{
                 y:5,
                 duration:1.5,
                 delay:0.05
             },"var2")
-            tl2.to(gltf.scene.scale,{
+            tl2.to(model.scale,{
                 x:4,
                 y:4,
                 z:4,
@@ -115,16 +95,6 @@ gltfLoader.load(
                 delay:0.05
             },"var2")
            }
-           shoeanimate()
-           updateModelScale()
-            
-
-                 
-    },
-    
-)
-
-
 function updateModelScale() {
     if (model) {
         const scaleFactor = Math.min(window.innerWidth / 800, window.innerHeight / 800); // Adjust 800 to the desired base size
@@ -197,6 +167,7 @@ window.addEventListener('resize', () =>
     updateModelScale()
     
 })
+
 
 const cursor = {}
 cursor.x = 0
