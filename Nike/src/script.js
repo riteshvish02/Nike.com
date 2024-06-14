@@ -1,41 +1,37 @@
+import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
-import './style.css'
+
 
 const gltfLoader = new GLTFLoader()
 
 //locomotive
 
-// function inet(){
-// gsap.registerPlugin(ScrollTrigger);
-// const locoScroll = new LocomotiveScroll({
-//   el: document.querySelector("#main"),
-//   smooth: true
-// });
-// locoScroll.on("scroll", ScrollTrigger.update);
+function inet(){
+gsap.registerPlugin(ScrollTrigger);
+const locoScroll = new LocomotiveScroll({
+  el: document.querySelector("#main"),
+  smooth: true
+});
+locoScroll.on("scroll", ScrollTrigger.update);
 
-// ScrollTrigger.scrollerProxy("#main", {
-//   scrollTop(value) {
-//     return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
-//   }, 
-//     getBoundingClientRect() {
-//     return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
-//   },
-//   pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
-// });
+ScrollTrigger.scrollerProxy("#main", {
+  scrollTop(value) {
+    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+  }, 
+    getBoundingClientRect() {
+    return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+  },
+  pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
+});
 
-// }
+}
 
-// inet();
+inet();
 
-let model;
-let initialScale = 3
-
+let model
 gltfLoader.load(
     '/models/nike_tc_7900_sail/scene.gltf',
     (gltf)=>{
@@ -43,24 +39,41 @@ gltfLoader.load(
          
         console.log(gltf);
         gltf.scene.position.set(0,-2,0)
-        gltf.scene.scale.set(initialScale,initialScale,initialScale)
+        gltf.scene.scale.set(3,3,3)
         gltf.scene.rotation.set(-Math.PI/2,Math.PI/2,0)
         scene.add(gltf.scene)
-        
-        shoeanimate()
-       
-        //    updateModelScale()
+            // gsap.to(gltf.scene.position,{
+            //     y:"",
+            //     duration:1.2,
+            //     yoyo:true,
+            //     repeat:-1,
+            // })
+
+            // let tl1 = gsap.timeline({
+            //     scrollTrigger:{
+            //         scroller:"#main",
+            //         trigger:"#page1",
+            //         start:"top 0%",
+            //         end:"bottom 50%",
+            //         markers:true,
+            //         scrub:true,
+            //         pin:true,
+            //     }
+            // })
+            // tl1.to("#mount1",{
+            //     x:-420,
+            //     onComplete:()=>{
+            //         console.log("hello");
+            //         shoeanimate()
+            //     }
+            // })
+
+           
             
-
-                 
-    },
-    
-)
-
-    function shoeanimate(){
+           function shoeanimate(){
             let tl2 = gsap.timeline({
                 scrollTrigger:{
-                    scroller:"body",
+                    scroller:"#main",
                     trigger:"#page1",
                     start:"top 0%",
                     end:"bottom -100%",
@@ -69,25 +82,28 @@ gltfLoader.load(
                     pin:true
                 }
             })
-            tl2.to("#page1",{
-                backgroundColor:"red",
+            tl2.to("#mount1",{
+                x:-420,
                 duration:1.5,
             },"var")
-           
-            tl2.to(model.position,{
+            tl2.to("#mount2",{
+                x:420,
+                duration:1.5,
+            },"var")
+            tl2.to(gltf.scene.position,{
                 y:0,
             },"var")
-            tl2.to(model.rotation,{
+            tl2.to(gltf.scene.rotation,{
                 x:0,
                 duration:1,
                 delay:0.05
             },"var")
-            tl2.to(model.rotation,{
+            tl2.to(gltf.scene.rotation,{
                 y:5,
                 duration:1.5,
                 delay:0.05
             },"var2")
-            tl2.to(model.scale,{
+            tl2.to(gltf.scene.scale,{
                 x:4,
                 y:4,
                 z:4,
@@ -95,13 +111,27 @@ gltfLoader.load(
                 delay:0.05
             },"var2")
            }
-function updateModelScale() {
-    if (model) {
-        const scaleFactor = Math.min(window.innerWidth / 800, window.innerHeight / 800); // Adjust 800 to the desired base size
-        const newScale = initialScale * scaleFactor;
-        model.scale.set(newScale, newScale, newScale);
-    }
-}
+           shoeanimate()
+            
+            
+
+            //helper
+            // gui.add(gltf.scene.position,'x').min(0).max(8).step(0.2).name('shoePositionX')
+            // gui.add(gltf.scene.position,'y').min(0).max(8).step(0.2).name('shoePositionY')
+            // gui.add(gltf.scene.position,'z').min(0).max(8).step(0.2).name('shoePositionZ')
+
+            // gui.add(gltf.scene.scale,'x').min(0).max(8).step(0.2).name('shoeScaleX')
+            // gui.add(gltf.scene.scale,'y').min(0).max(8).step(0.2).name('shoeScaleY')
+            // gui.add(gltf.scene.scale,'z').min(0).max(8).step(0.2).name('shoeScaleZ')
+
+            // gui.add(gltf.scene.rotation,'x').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationX')
+            // gui.add(gltf.scene.rotation,'y').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationY')
+            // gui.add(gltf.scene.rotation,'z').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationZ')
+           
+    },
+    
+)
+
 /**
  * Base
  */
@@ -109,7 +139,7 @@ function updateModelScale() {
 // const gui = new dat.GUI({width:400,height:1000})
 // var guiDom = gui.domElement;
 
-// Position the GUI panel
+// // Position the GUI panel
 // guiDom.style.position = 'absolute'; // Set the position to absolute
 // guiDom.style.top = '10px';          // Distance from the top of the screen
 // guiDom.style.left = '10px';  
@@ -164,10 +194,7 @@ window.addEventListener('resize', () =>
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    updateModelScale()
-    
 })
-
 
 const cursor = {}
 cursor.x = 0
@@ -254,4 +281,3 @@ const tick = () =>
 
 
 tick()
-
