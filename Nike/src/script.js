@@ -11,27 +11,27 @@ const gltfLoader = new GLTFLoader()
 
 //locomotive
 
-function inet(){
-gsap.registerPlugin(ScrollTrigger);
-const locoScroll = new LocomotiveScroll({
-  el: document.querySelector("#main"),
-  smooth: true
-});
-locoScroll.on("scroll", ScrollTrigger.update);
+// function inet(){
+// gsap.registerPlugin(ScrollTrigger);
+// const locoScroll = new LocomotiveScroll({
+//   el: document.querySelector("#main"),
+//   smooth: true
+// });
+// locoScroll.on("scroll", ScrollTrigger.update);
 
-ScrollTrigger.scrollerProxy("#main", {
-  scrollTop(value) {
-    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
-  }, 
-    getBoundingClientRect() {
-    return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
-  },
-  pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
-});
+// ScrollTrigger.scrollerProxy("#main", {
+//   scrollTop(value) {
+//     return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+//   }, 
+//     getBoundingClientRect() {
+//     return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+//   },
+//   pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
+// });
 
-}
+// }
 
-inet();
+// inet();
 
 let model;
 let initialScale = 3
@@ -77,10 +77,10 @@ gltfLoader.load(
            function shoeanimate(){
             let tl2 = gsap.timeline({
                 scrollTrigger:{
-                    scroller:"#main",
+                    scroller:"body",
                     trigger:"#page1",
                     start:"top 0%",
-                    end:"bottom -100%",
+                    end:"bottom 0%",
                     markers:true,
                     scrub:true,
                     pin:true
@@ -119,19 +119,7 @@ gltfLoader.load(
            updateModelScale()
             
 
-            //helper
-            // gui.add(gltf.scene.position,'x').min(0).max(8).step(0.2).name('shoePositionX')
-            // gui.add(gltf.scene.position,'y').min(0).max(8).step(0.2).name('shoePositionY')
-            // gui.add(gltf.scene.position,'z').min(0).max(8).step(0.2).name('shoePositionZ')
-
-            // gui.add(gltf.scene.scale,'x').min(0).max(8).step(0.2).name('shoeScaleX')
-            // gui.add(gltf.scene.scale,'y').min(0).max(8).step(0.2).name('shoeScaleY')
-            // gui.add(gltf.scene.scale,'z').min(0).max(8).step(0.2).name('shoeScaleZ')
-
-            // gui.add(gltf.scene.rotation,'x').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationX')
-            // gui.add(gltf.scene.rotation,'y').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationY')
-            // gui.add(gltf.scene.rotation,'z').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationZ')
-           
+                 
     },
     
 )

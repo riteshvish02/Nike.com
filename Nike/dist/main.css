@@ -8,14 +8,9 @@ html,
 body
 { width: 100%;
     height: 100%;
-    overflow-x: hidden!important;
-    /* background: #000; */
+    
 }
-#main{
-    position: relative;
-    overflow-x: hidden!important;
 
-}
 .page{
     width: 100%;
     height: 100vh;
@@ -32,9 +27,9 @@ img{
    overflow-y: hidden;
    top: 0;
    pointer-events: none;
-   position: fixed;  
+   position: absolute;
    /* background: green; */
-   z-index: 1;
+   z-index: -1;
 }
 #main::-webkit-scrollbar{
     display: none!important;
@@ -44,10 +39,10 @@ img{
     width: 100%;
     height: 100vh;
     background-position: center;
-    /* position: absolute; */
     z-index: 99999999999;
     background-size: cover;
     background-image: url(fca919e72b211e81.webp);
+    background: #000;
 }
 #page1 #mountain{
     width: 100%;
@@ -55,7 +50,7 @@ img{
     display: flex;
     justify-content: space-between;
     position: relative;
-    z-index: 99999;
+    z-index: 999999999999;
 }
 #page1 #clouds{
  position: absolute;
@@ -100,7 +95,7 @@ img{
 #page2{
     width: 100%;
     height: 100vh;
-    /* background-color: red;    */
+    background-color: red;   
     background-image: url(6047a48c2306344d.webp);
     background-size: cover;
     background-position: center;
