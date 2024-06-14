@@ -42,7 +42,7 @@ img{
     z-index: 99999999999;
     background-size: cover;
     background-image: url(fca919e72b211e81.webp);
-    background: #000;
+    /* background: #000; */
 }
 #page1 #mountain{
     width: 100%;

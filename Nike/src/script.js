@@ -3,9 +3,9 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
+import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
-import gsap from 'gsap'
 
 const gltfLoader = new GLTFLoader()
 
@@ -80,7 +80,7 @@ gltfLoader.load(
                     scroller:"body",
                     trigger:"#page1",
                     start:"top 0%",
-                    end:"bottom 0%",
+                    end:"bottom -100%",
                     markers:true,
                     scrub:true,
                     pin:true

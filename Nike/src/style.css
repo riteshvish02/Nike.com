@@ -42,7 +42,7 @@ img{
     z-index: 99999999999;
     background-size: cover;
     background-image: url('../static/assets/clouds/cloud-light-2.webp');
-    background: #000;
+    /* background: #000; */
 }
 #page1 #mountain{
     width: 100%;
