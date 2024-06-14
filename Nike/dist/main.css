@@ -1,0 +1,131 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body
+{ width: 100%;
+    height: 100%;
+    overflow-x: hidden!important;
+    /* background: #000; */
+}
+#main{
+    position: relative;
+    overflow-x: hidden!important;
+
+}
+.page{
+    width: 100%;
+    height: 100vh;
+}
+img{
+    object-fit: cover;
+    object-position: center;
+}
+.webgl
+{
+   width: 100vw;
+   height: 100vh;
+   overflow-x: hidden;
+   overflow-y: hidden;
+   top: 0;
+   pointer-events: none;
+   position: fixed;  
+   /* background: green; */
+   z-index: 1;
+}
+#main::-webkit-scrollbar{
+    display: none!important;
+}
+
+#page1{
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    /* position: absolute; */
+    z-index: 99999999999;
+    background-size: cover;
+    background-image: url(fca919e72b211e81.webp);
+}
+#page1 #mountain{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 99999;
+}
+#page1 #clouds{
+ position: absolute;
+ z-index: 8888;
+ width: 100%;
+ height: 100%;
+}
+#page1 #clouds #cldimg1{
+    /* float: right; */
+    top: 0%!important;
+    right: 0%;
+    height: 80% ;
+    position: absolute;
+}
+#page1 #clouds #cldimg3{
+    /* float: right; */
+    top: 0%!important;
+    left: 0%;
+    /* height: 80% ; */
+    position: absolute;
+}
+#page1 #clouds #cldimg2{
+    /* float: right; */
+    bottom: 0%!important;
+    left: 0%;
+    /* height: 80% ; */
+    position: absolute;
+}
+
+#page1 #clouds #cldimg4{
+    /* float: right; */
+    bottom: 0%!important;
+    right: 0%;
+    /* height: 80% ; */
+    position: absolute;
+}
+#page1 #clouds img{
+    /* background: #000; */
+}
+
+
+#page2{
+    width: 100%;
+    height: 100vh;
+    /* background-color: red;    */
+    background-image: url(6047a48c2306344d.webp);
+    background-size: cover;
+    background-position: center;
+    position: relative!important;
+    z-index: 9999999999!important;
+}
+#page2 #clds1{
+left: -10%;
+top: -50%;
+/* position: absolute;background:red; */
+
+}
+
+#page2 #clds2{
+    left: 50%;
+    top: -50%;
+    position: absolute;
+}
+
+#page2 #clds3{
+    left: 10%;
+    top: -50%;
+    position: absolute;
+}
+
+
+
+/*# sourceMappingURL=main.css.map*/

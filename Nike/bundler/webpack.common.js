@@ -23,6 +23,11 @@ module.exports = {
             template: path.resolve(__dirname, '../src/index.html'),
             minify: true
         }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, '../src/work.html'),
+            filename: 'work.html',
+            minify: true
+        }),
         new MiniCSSExtractPlugin()
     ],
     module:
@@ -75,6 +80,16 @@ module.exports = {
                 generator:
                 {
                     filename: 'assets/fonts/[hash][ext]'
+                }
+            },
+
+            // Shaders
+            {
+                test: /\.(glsl|vs|fs|vert|frag)$/,
+                type: 'asset/source',
+                generator:
+                {
+                    filename: 'assets/images/[hash][ext]'
                 }
             }
         ]

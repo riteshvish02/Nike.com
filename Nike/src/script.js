@@ -33,7 +33,9 @@ ScrollTrigger.scrollerProxy("#main", {
 
 inet();
 
-let model
+let model;
+let initialScale = 3
+
 gltfLoader.load(
     '/models/nike_tc_7900_sail/scene.gltf',
     (gltf)=>{
@@ -41,7 +43,7 @@ gltfLoader.load(
          
         console.log(gltf);
         gltf.scene.position.set(0,-2,0)
-        gltf.scene.scale.set(3,3,3)
+        gltf.scene.scale.set(initialScale,initialScale,initialScale)
         gltf.scene.rotation.set(-Math.PI/2,Math.PI/2,0)
         scene.add(gltf.scene)
             // gsap.to(gltf.scene.position,{
@@ -114,37 +116,45 @@ gltfLoader.load(
             },"var2")
            }
            shoeanimate()
-            
+           updateModelScale()
             
 
             //helper
-            gui.add(gltf.scene.position,'x').min(0).max(8).step(0.2).name('shoePositionX')
-            gui.add(gltf.scene.position,'y').min(0).max(8).step(0.2).name('shoePositionY')
-            gui.add(gltf.scene.position,'z').min(0).max(8).step(0.2).name('shoePositionZ')
+            // gui.add(gltf.scene.position,'x').min(0).max(8).step(0.2).name('shoePositionX')
+            // gui.add(gltf.scene.position,'y').min(0).max(8).step(0.2).name('shoePositionY')
+            // gui.add(gltf.scene.position,'z').min(0).max(8).step(0.2).name('shoePositionZ')
 
-            gui.add(gltf.scene.scale,'x').min(0).max(8).step(0.2).name('shoeScaleX')
-            gui.add(gltf.scene.scale,'y').min(0).max(8).step(0.2).name('shoeScaleY')
-            gui.add(gltf.scene.scale,'z').min(0).max(8).step(0.2).name('shoeScaleZ')
+            // gui.add(gltf.scene.scale,'x').min(0).max(8).step(0.2).name('shoeScaleX')
+            // gui.add(gltf.scene.scale,'y').min(0).max(8).step(0.2).name('shoeScaleY')
+            // gui.add(gltf.scene.scale,'z').min(0).max(8).step(0.2).name('shoeScaleZ')
 
-            gui.add(gltf.scene.rotation,'x').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationX')
-            gui.add(gltf.scene.rotation,'y').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationY')
-            gui.add(gltf.scene.rotation,'z').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationZ')
+            // gui.add(gltf.scene.rotation,'x').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationX')
+            // gui.add(gltf.scene.rotation,'y').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationY')
+            // gui.add(gltf.scene.rotation,'z').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationZ')
            
     },
     
 )
 
+
+function updateModelScale() {
+    if (model) {
+        const scaleFactor = Math.min(window.innerWidth / 800, window.innerHeight / 800); // Adjust 800 to the desired base size
+        const newScale = initialScale * scaleFactor;
+        model.scale.set(newScale, newScale, newScale);
+    }
+}
 /**
  * Base
  */
 // Debug
-const gui = new dat.GUI({width:400,height:1000})
-var guiDom = gui.domElement;
+// const gui = new dat.GUI({width:400,height:1000})
+// var guiDom = gui.domElement;
 
 // Position the GUI panel
-guiDom.style.position = 'absolute'; // Set the position to absolute
-guiDom.style.top = '10px';          // Distance from the top of the screen
-guiDom.style.left = '10px';  
+// guiDom.style.position = 'absolute'; // Set the position to absolute
+// guiDom.style.top = '10px';          // Distance from the top of the screen
+// guiDom.style.left = '10px';  
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
 
@@ -168,11 +178,11 @@ directionalLight.shadow.camera.bottom = - 7
 directionalLight.position.set(2, 2, 1)
 scene.add(directionalLight)
 const DirectionalLightHelper = new THREE.DirectionalLightHelper(directionalLight,0.2)
-scene.add(DirectionalLightHelper)
-gui.add(directionalLight.position,'x').max(10).min(0).step(0.0001).name('DirectionalLightX')
-gui.add(directionalLight.position,'y').max(10).min(0).step(0.0001).name('DirectionalLightY')
-gui.add(directionalLight.position,'z').max(10).min(0).step(0.0001).name('DirectionalLightZ')
-gui.add(directionalLight,'intensity').min(0).max(10).step(0.001).name('lightIntensity')
+// scene.add(DirectionalLightHelper)
+// gui.add(directionalLight.position,'x').max(10).min(0).step(0.0001).name('DirectionalLightX')
+// gui.add(directionalLight.position,'y').max(10).min(0).step(0.0001).name('DirectionalLightY')
+// gui.add(directionalLight.position,'z').max(10).min(0).step(0.0001).name('DirectionalLightZ')
+// gui.add(directionalLight,'intensity').min(0).max(10).step(0.001).name('lightIntensity')
 
 
 /**
@@ -196,6 +206,8 @@ window.addEventListener('resize', () =>
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    updateModelScale()
+    
 })
 
 const cursor = {}
@@ -244,13 +256,13 @@ renderer.toneMappingExposure = 3
 
 
 //helpers
-gui.add(renderer,'toneMapping',{
-    No:THREE.NoToneMapping,
-    Linaer:THREE.LinearToneMapping,
-    Reinhard:THREE.ReinhardToneMapping,
-    cineon:THREE.CineonToneMapping,
-    ACESFilmicg:THREE.ACESFilmicToneMapping,
-})
+// gui.add(renderer,'toneMapping',{
+//     No:THREE.NoToneMapping,
+//     Linaer:THREE.LinearToneMapping,
+//     Reinhard:THREE.ReinhardToneMapping,
+//     cineon:THREE.CineonToneMapping,
+//     ACESFilmicg:THREE.ACESFilmicToneMapping,
+// })
 /**
  * Animate
  */
@@ -283,3 +295,4 @@ const tick = () =>
 
 
 tick()
+
