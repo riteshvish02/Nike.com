@@ -6,29 +6,55 @@
 
 html,
 body
-{ width: 100%;
+{ 
+    width: 100%;
     height: 100%;
     
 }
-
-.page{
-    width: 100%;
-    height: 100vh;
+#main{
+    position: relative;
+    overflow-x: hidden;
+}
+@font-face {
+    font-family: "ritesh";
+    src: url(assets/fonts/6e77a69850838bf4.ttf);
+}
+@font-face {
+    font-family: 'kk';
+    src: url(assets/fonts/f4a4501e5640e15c.ttf);
 }
 img{
     object-fit: cover;
     object-position: center;
 }
+@media (max-width: 600px) {
+
+#page1 #mountain #mount1{
+    height: 100%;
+    width: 100%;
+    margin-left: -25%;
+    object-fit: cover;
+}
+#page1 #mountain #mount1{
+    height: 100%;
+    width: 100%;
+    margin-right: 13%;
+    object-fit: cover;
+}
+#page1 h2{
+    display: none;
+}
+
+}
+
+
 .webgl
 {
-   width: 100vw;
-   height: 100vh;
-   overflow-x: hidden;
-   overflow-y: hidden;
-   top: 0;
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
    pointer-events: none;
    position: absolute;
-   /* background: green; */
    z-index: 9999;
 }
 #main::-webkit-scrollbar{
@@ -36,13 +62,24 @@ img{
 }
 
 #page1{
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-position: center;
     z-index: 99999999999;
+    overflow-x: hidden;
     background-size: cover;
     background-image: url(fca919e72b211e81.webp);
     /* background: #000; */
+}
+#page1 h2{
+    position: absolute!important;
+    font-family:ritesh;
+    color: #272521;
+    font-size: 15vh;
+    z-index: 9999999999999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 #page1 #mountain{
     width: 100%;
@@ -52,6 +89,8 @@ img{
     position: relative;
     z-index: 999999999999;
 }
+
+
 #page1 #clouds{
  position: absolute;
  z-index: 8888;
@@ -93,7 +132,7 @@ img{
 
 
 #page2{
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: red;   
     background-image: url(6047a48c2306344d.webp);
