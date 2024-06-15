@@ -76,7 +76,7 @@ gltfLoader.load(
                     scroller:"#main",
                     trigger:"#page1",
                     start:"top 0%",
-                    end:"bottom -100%",
+                    end:"bottom 0%",
                     markers:true,
                     scrub:true,
                     pin:true
