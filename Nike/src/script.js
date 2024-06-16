@@ -53,12 +53,12 @@ gltfLoader.load(
     (gltf)=>{
         model = gltf.scene
         console.log(gltf);
-        gltf.scene.position.set(0,-2,0)
-        gltf.scene.scale.set(1,1,1)
-        gltf.scene.rotation.set(-Math.PI/2,Math.PI/2,0)
-        scene.add(gltf.scene)
+        model.position.set(0,-2,0)
+        model.scale.set(1,1,1)
+        model.rotation.set(-Math.PI/2,Math.PI/2,0)
+        scene.add(model)
         adjustModelForScreen()
-            // gsap.to(gltf.scene.position,{
+            // gsap.to(model.position,{
             //     y:"",
             //     duration:1.2,
             //     yoyo:true,
@@ -106,20 +106,20 @@ gltfLoader.load(
                 x:420,
                 duration:1.5,
             },"var")
-            tl2.to(gltf.scene.position,{
+            tl2.to(model.position,{
                 y:0,
             },"var")
-            tl2.to(gltf.scene.rotation,{
+            tl2.to(model.rotation,{
                 x:0,
                 duration:1,
                 delay:0.05
             },"var")
-            tl2.to(gltf.scene.rotation,{
+            tl2.to(model.rotation,{
                 y:5,
                 duration:1.5,
                 delay:0.05
             },"var2")
-            tl2.to(gltf.scene.scale,{
+            tl2.to(model.scale,{
                 x:1,
                 y:1,
                 z:1,
@@ -189,9 +189,6 @@ function refreshPageIfNeeded() {
     wasMobile = isMobile;
 }
 
-window.addEventListener('resize', () => {
-    refreshPageIfNeeded();
-});
 
 refreshPageIfNeeded();
 
@@ -199,13 +196,12 @@ refreshPageIfNeeded();
 
 function adjustModelForScreen() {
     if (model) {
-        const aspectRatio = sizes.width / sizes.height
-        if (aspectRatio < 1) { // Portrait mode
+        const aspectRatio = window.matchMedia("(max-width: 768px)").matches
+        console.log(aspectRatio);
+        if (aspectRatio) { // Portrait mode
             model.scale.set(2, 2, 2)
-            model.position.set(0, -1, 0)
         } else { // Landscape mode
             model.scale.set(3, 3, 3)
-            model.position.set(0, -2, 0)
         }
     }
 }
@@ -227,13 +223,13 @@ function updateRenderer() {
 
 function onWindowResize() {
     updateSizes()
-    // updateCamera()
-    // updateRenderer()
+    updateCamera()
+    updateRenderer()
     adjustModelForScreen()
 }
 
 window.addEventListener('resize',()=>{
-
+    
     onWindowResize()
     refreshPageIfNeeded();
 }

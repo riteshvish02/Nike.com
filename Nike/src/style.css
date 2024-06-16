@@ -81,7 +81,7 @@ img{
     height: 100vh;
     background-position: center;
     z-index: 99999999999;
-    overflow-x: hidden;
+    overflow: hidden;
     background-size: cover;
     background-image: url('../static/assets/clouds/cloud-light-2.webp');
     /* background: #000; */
@@ -147,9 +147,6 @@ img{
     /* height: 80% ; */
     position: absolute;
 }
-#page1 #clouds img{
-    /* background: #000; */
-}
 
 
 #page2{
@@ -162,12 +159,7 @@ img{
     position: relative!important;
     z-index: 9999999999!important;
 }
-#page2 #clds1{
-left: -10%;
-top: -50%;
-/* position: absolute;background:red; */
 
-}
 
 #page2 #clds2{
     left: 50%;
