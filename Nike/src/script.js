@@ -54,10 +54,10 @@ gltfLoader.load(
         model = gltf.scene
         console.log(gltf);
         gltf.scene.position.set(0,-2,0)
-        gltf.scene.scale.set(3,3,3)
+        gltf.scene.scale.set(1,1,1)
         gltf.scene.rotation.set(-Math.PI/2,Math.PI/2,0)
         scene.add(gltf.scene)
-        adjustModelForScreen()
+        // adjustModelForScreen()
             // gsap.to(gltf.scene.position,{
             //     y:"",
             //     duration:1.2,
@@ -176,68 +176,68 @@ const sizes = {
 }
 
 
-let wasMobile = sizes.width <= 768; // Assume mobile view if initial width <= 768
+// let wasMobile = sizes.width <= 768; // Assume mobile view if initial width <= 768
 
-function refreshPageIfNeeded() {
-    const isMobile = window.innerWidth <= 768;
+// function refreshPageIfNeeded() {
+//     const isMobile = window.innerWidth <= 768;
 
-    // Check if the viewport crossed the mobile threshold
-    if (isMobile !== wasMobile) {
-        location.reload(); // Reload the page
-    }
+//     // Check if the viewport crossed the mobile threshold
+//     if (isMobile !== wasMobile) {
+//         location.reload(); // Reload the page
+//     }
 
-    wasMobile = isMobile;
-}
+//     wasMobile = isMobile;
+// }
 
-window.addEventListener('resize', () => {
-    refreshPageIfNeeded();
-});
+// window.addEventListener('resize', () => {
+//     refreshPageIfNeeded();
+// });
 
-refreshPageIfNeeded();
+// refreshPageIfNeeded();
 
 
 
-function adjustModelForScreen() {
-    if (model) {
-        const aspectRatio = sizes.width / sizes.height
-        if (aspectRatio < 1) { // Portrait mode
-            model.scale.set(2, 2, 2)
-            model.position.set(0, -1, 0)
-        } else { // Landscape mode
-            model.scale.set(3, 3, 3)
-            model.position.set(0, -2, 0)
-        }
-    }
-}
+// function adjustModelForScreen() {
+//     if (model) {
+//         const aspectRatio = sizes.width / sizes.height
+//         if (aspectRatio < 1) { // Portrait mode
+//             model.scale.set(2, 2, 2)
+//             model.position.set(0, -1, 0)
+//         } else { // Landscape mode
+//             model.scale.set(3, 3, 3)
+//             model.position.set(0, -2, 0)
+//         }
+//     }
+// }
 
-function updateSizes() {
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
-}
+// function updateSizes() {
+//     sizes.width = window.innerWidth
+//     sizes.height = window.innerHeight
+// }
 
-function updateCamera() {
-    camera.aspect = sizes.width / sizes.height
-    camera.updateProjectionMatrix()
-}
+// function updateCamera() {
+//     camera.aspect = sizes.width / sizes.height
+//     camera.updateProjectionMatrix()
+// }
 
-function updateRenderer() {
-    renderer.setSize(sizes.width, sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-}
+// function updateRenderer() {
+//     renderer.setSize(sizes.width, sizes.height)
+//     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+// }
 
-function onWindowResize() {
-    updateSizes()
-    updateCamera()
-    updateRenderer()
-    adjustModelForScreen()
-}
+// function onWindowResize() {
+//     updateSizes()
+//     updateCamera()
+//     updateRenderer()
+//     adjustModelForScreen()
+// }
 
-window.addEventListener('resize',()=>{
+// window.addEventListener('resize',()=>{
 
-    onWindowResize()
-    refreshPageIfNeeded();
-}
-    )
+//     onWindowResize()
+//     refreshPageIfNeeded();
+// }
+//     )
 
 
 const cursor = {}
