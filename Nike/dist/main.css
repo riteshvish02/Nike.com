@@ -38,7 +38,9 @@ img{
        object-position: center;
 }
 @media (max-width: 600px) {
-
+#main{
+    z-index: -1;
+}
 #page1 #mountain #mount1{
     height: 100%;
     width: 100%;
@@ -66,8 +68,11 @@ img{
    height: 100%;
    overflow: hidden;
    pointer-events: none;
-   position: absolute;
-   z-index: 9999;
+   position: fixed;
+   top: 0%;
+   left: 0%;
+  
+   z-index: 9999999999999999999999!important;
 }
 #main::-webkit-scrollbar{
     display: none!important;
