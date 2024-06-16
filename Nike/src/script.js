@@ -29,7 +29,23 @@ ScrollTrigger.scrollerProxy("#main", {
 
 }
 
-inet();
+// inet();
+
+const lenis = new Lenis()
+lenis.on('scroll', (e) => {
+  console.log(e)
+})
+
+lenis.on('scroll', ScrollTrigger.update)
+
+gsap.ticker.add((time)=>{
+  lenis.raf(time * 5000)
+})
+
+gsap.ticker.lagSmoothing(0)
+
+
+
 
 let model
 gltfLoader.load(
@@ -73,10 +89,10 @@ gltfLoader.load(
            function shoeanimate(){
             let tl2 = gsap.timeline({
                 scrollTrigger:{
-                    scroller:"#main",
+                    scroller:"body",
                     trigger:"#page1",
                     start:"top 0%",
-                    end:"bottom 0%",
+                    end:"bottom -100%",
                     markers:true,
                     scrub:true,
                     pin:true
