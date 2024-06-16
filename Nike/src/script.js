@@ -127,7 +127,7 @@ gltfLoader.load(
                 delay:0.05
             },"var2")
            }
-           shoeanimate()
+        //    shoeanimate()
             
             
 
