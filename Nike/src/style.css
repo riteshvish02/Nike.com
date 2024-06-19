@@ -24,11 +24,11 @@ body
     overflow-x: hidden;
 }
 @font-face {
-    font-family: "ritesh";
+    font-family: "nike";
     src: url('../static/assets/fonts/Tektur-Variable.ttf');
 }
 @font-face {
-    font-family: 'kk';
+    font-family: 'nike2';
     src: url('../static/assets/fonts/VT323-Regular.ttf');
 }
 img{
@@ -38,9 +38,17 @@ img{
        object-position: center;
 }
 @media (max-width: 600px) {
-#main{
+/* #main{
     z-index: -1;
+} */
+#page1 .texts{
+   font-size: 5vh;
+   line-height: 50px;
+   white-space: nowrap;
+   margin-left: 5%;
 }
+
+
 #page1 #mountain #mount1{
     height: 100%;
     width: 100%;
@@ -55,9 +63,7 @@ img{
     -o-object-fit: cover;
        object-fit: cover;
 }
-#page1 h2{
-    display: none;
-}
+
 
 }
 
@@ -72,8 +78,9 @@ img{
    position: fixed;
    top: 0%;
    left: 0%;
-  
-   z-index: 9999999999999999999999!important;
+   right: 0;
+   bottom: 0;
+   z-index: 999999999999999999999999999!important;
 }
 #main::-webkit-scrollbar{
     display: none!important;
@@ -90,19 +97,72 @@ img{
     overflow: hidden;
     background-size: cover;
     background-image: url('../static/assets/clouds/cloud-light-2.webp');
-    background: #000;
+    /* background: #000; */
+}
+#page1 #text{
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: flex;
+    line-height: 17vh;
+    z-index: 99999999999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#page1 #text1{
+   
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 80%);
+    display: inline-block;
+    transform: scaleY(1.1);
+   height: fit-content;
+   width: fit-content;
+   
+}
+
+#page1 #text2{
+   
+    display: inline-block;
+    transform: scaleY(1.2);
+   height: fit-content;
+   width: fit-content;
+
 }
 #page1 h2{
-    position: absolute!important;
-    font-family:ritesh;
     color: #272521;
-    font-size: 15vh;
+    font-family: nike;
+    font-weight: 700;
+    font-size: 17vh;
     z-index: 9999999999999;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+   
+}
+#page1 h4{
+    -webkit-text-stroke: 4px white;
+    font-family: nike;
+    font-weight: 700;
+    margin: 5px;
+    font-size: 20vh;
+    color: transparent;
+    transform: rotate(-2deg);
+    z-index: 9999999999999;
+   
+}
+#page1 h5{
+    color: #bea86e;
+    font-family: gilroy;
+    font-size:80px;
+}
+
+#page1 h3{
+    color: #262320e9;
+    font-family: nike;
+    font-weight: 750;
+    font-size: 19vh;
+    z-index: 9999999999999;
+   
 }
 #page1 #mountain{
     width: 100%;
@@ -114,7 +174,7 @@ img{
         -ms-flex-pack: justify;
             justify-content: space-between;
     position: relative;
-    z-index: 999999999999;
+    z-index: 9999999999999999999999;
 }
 
 
@@ -122,6 +182,9 @@ img{
  position: absolute;
  z-index: 8888;
  width: 100%;
+ top: 0;
+ left: 0;
+ overflow: hidden;
  height: 100%;
 }
 #page1 #clouds #cldimg1{
@@ -154,11 +217,74 @@ img{
     position: absolute;
 }
 
+#page1 #clouds #cldimg5{
+    /* float: right; */
+    top: -20%!important;
+    left: -10%;
+    /* height: 80% ; */
+    position: absolute;
+}
+#page1 #clouds #cldimg6{
+    /* float: right; */
+    top: -10%!important;
+    right: -10%;
+    /* height: 80% ; */
+    position: absolute;
+}
+#page1 #clouds #cldimg7{
+    /* float: right; */
+    bottom: -10%!important;
+    left: -5%;
+    /* height: 80% ; */
+    position: absolute;
+}
+#page1 #clouds #cldimg8{
+    /* float: right; */
+    bottom: -10%!important;
+    right: -5%;
+    /* height: 80% ; */
+    position: absolute;
+}
+#page1 #cloudanimate{
+    width: 100%;
+    height: 100%;
+    bottom:-100% ;
+    pointer-events: none;
+    /* top: 20%; */
+    /* background: #000; */
+    background-image: url('../static/assets/clouds/cloud-anim-3.def7f08a.webp');
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    position: absolute;
+    z-index: 99999999;
+}
+#page1 #cloudanimate #clds1{
+    left: 50%;
+    top: -10%;
+    position: absolute;
+}
+#page1 #cloudanimate #clds2{
+    right: 50%;
+    top: -10%;
+    position: absolute;
+}
+#page1 #cloudanimate #clds3{
+    left: 25%;
+    top: -15%;
+    position: absolute;
+}
+
+#page1 #cloudanimate #clds4{
+    left: 20%;
+    top: 10%;
+    position: absolute;
+}
 
 #page2{
     width: 100vw;
     height: 100vh;
-    background-color: red;   
+    /* background-color: red;    */
     background-image: url('../static/assets/clouds/cloud-light-1.webp');
     background-size: cover;
     background-position: center;
@@ -167,17 +293,7 @@ img{
 }
 
 
-#page2 #clds2{
-    left: 50%;
-    top: -50%;
-    position: absolute;
-}
 
-#page2 #clds3{
-    left: 10%;
-    top: -50%;
-    position: absolute;
-}
 
 #page3{
     background-color: aquamarine;

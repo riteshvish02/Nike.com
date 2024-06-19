@@ -3,7 +3,12 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
-
+const gui = new dat.GUI({width:400,height:1000})
+var guiDom = gui.domElement;
+// Position the GUI panel
+guiDom.style.position = 'absolute'; // Set the position to absolute
+guiDom.style.top = '10px';          // Distance from the top of the screen
+guiDom.style.left = '10px';  
 
 const gltfLoader = new GLTFLoader()
 
@@ -31,59 +36,31 @@ ScrollTrigger.scrollerProxy("#main", {
 
 inet();
 
-// const lenis = new Lenis()
-// lenis.on('scroll', (e) => {
-//   console.log(e)
-// })
-
-// lenis.on('scroll', ScrollTrigger.update)
-
-// gsap.ticker.add((time)=>{
-//   lenis.raf(time * 5000)
-// })
-
-// gsap.ticker.lagSmoothing(0)
-
 
 
 
 let model
 gltfLoader.load(
-    '/models/nike_tc_7900_sail/scene.gltf',
+    '/models/nike_air_max_90 (2)/scene.gltf',
     (gltf)=>{
         model = gltf.scene
+        gltf.scene.scale.set(10,10,10)
         console.log(gltf);
-        model.position.set(0,-2,0)
-        model.scale.set(1,1,1)
-        model.rotation.set(-Math.PI/2,Math.PI/2,0)
-        scene.add(model)
+        gltf.scene.position.set(0,-2.8,0)
+        gltf.scene.rotation.set(-1,1.4,-0.40)
+        model.traverse((child) => {
+            if (child.isMesh) {
+              // Ensure the material is a standard material
+              if (child.material.isMeshStandardMaterial) {
+                // Set the metalness and roughness
+                child.material.metalness = 0.1; // Example value for metalness
+                child.material.roughness = 0.2; // Example value for roughness
+              }
+            }
+          });
+        scene.add(gltf.scene)
         adjustModelForScreen()
-            // gsap.to(model.position,{
-            //     y:"",
-            //     duration:1.2,
-            //     yoyo:true,
-            //     repeat:-1,
-            // })
-
-            // let tl1 = gsap.timeline({
-            //     scrollTrigger:{
-            //         scroller:"#main",
-            //         trigger:"#page1",
-            //         start:"top 0%",
-            //         end:"bottom 50%",
-            //         markers:true,
-            //         scrub:true,
-            //         pin:true,
-            //     }
-            // })
-            // tl1.to("#mount1",{
-            //     x:-420,
-            //     onComplete:()=>{
-            //         console.log("hello");
-            //         shoeanimate()
-            //     }
-            // })
-
+           
            
             
            function shoeanimate(){
@@ -92,43 +69,76 @@ gltfLoader.load(
                     scroller:"#main",
                     trigger:"#page1",
                     start:"top 0%",
+                    end:"bottom -100%",
                     markers:true,
                     scrub:true,
                     pin:true
                 }
             })
             tl2.to("#mount1",{
-                x:-420,
+                x:-440,
                 duration:1.5,
             },"var")
             tl2.to("#mount2",{
-                x:420,
+                x:440,
                 duration:1.5,
+            },"var")
+            tl2.to("#page1 #text .texts",{
+               opacity:"0",
+            },"var")
+            tl2.to('.cld',{
+                y:-800,
+                duration:2,
+                // backgroundColor:'red'
+            },"var")
+            tl2.to('#page1 #cloudanimate',{
+                bottom : 0,
+                duration:2,
+                // backgroundColor:'red'
             },"var")
             tl2.to(model.position,{
                 y:0,
             },"var")
+            // tl2.to(model.rotation,{
+            //     x:model.rotation.x + 2,
+            //     duration:1,
+            //     delay:0.05
+            // },"var")
             tl2.to(model.rotation,{
-                x:0,
-                duration:1,
-                delay:0.05
-            },"var")
-            tl2.to(model.rotation,{
-                y:5,
-                duration:1.5,
-                delay:0.05
+                z:-0.5,
+                x:0.5,
+                y:1,
+                delay:-1.8
+                // duration:1.5,
             },"var2")
             tl2.to(model.scale,{
-                x:1,
-                y:1,
-                z:1,
+                x:10,
+                y:10,
+                z:10,
                 duration:1.5,
-                delay:0.05
             },"var2")
+            tl2.to(model.position,{
+                x:-0.8,
+                z:0,
+                duration:1.5,
+            },"var2")
+            // tl2.to(model.rotation,{
+            //     x:-0.4,
+            //     z:0.6,
+            //     duration:1.5,
+            // },"var2")
            }
            shoeanimate()
             
-            
+           gui.add(gltf.scene.position,'x').min(-8).max(8).step(0.2).name('shoePositionX')
+           gui.add(gltf.scene.position,'y').min(-8).max(8).step(0.2).name('shoePositionY')
+           gui.add(gltf.scene.position,'z').min(-8).max(8).step(0.2).name('shoePositionZ')
+           gui.add(gltf.scene.scale,'x').min(0).max(8).step(0.2).name('shoeScaleX')
+           gui.add(gltf.scene.scale,'y').min(0).max(8).step(0.2).name('shoeScaleY')
+           gui.add(gltf.scene.scale,'z').min(0).max(8).step(0.2).name('shoeScaleZ')
+           gui.add(gltf.scene.rotation,'x').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationX')
+           gui.add(gltf.scene.rotation,'y').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationY')
+           gui.add(gltf.scene.rotation,'z').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationZ')
 
            
     },
@@ -153,7 +163,7 @@ const scene = new THREE.Scene()
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
 scene.add(ambientLight)
 
-const directionalLight = new THREE.DirectionalLight('#ffffff', 3)
+const directionalLight = new THREE.DirectionalLight('#ffffff', 5)
 directionalLight.castShadow = true
 directionalLight.shadow.mapSize.set(1024, 1024)
 directionalLight.shadow.camera.far = 15
@@ -198,9 +208,9 @@ function adjustModelForScreen() {
         const aspectRatio = window.matchMedia("(max-width: 768px)").matches
         console.log(aspectRatio);
         if (aspectRatio) { // Portrait mode
-            model.scale.set(2, 2, 2)
+            model.scale.set(0.25, 0.25, 0.25)
         } else { // Landscape mode
-            model.scale.set(3, 3, 3)
+            model.scale.set(7.5, 7.5, 7.5)
         }
     }
 }
