@@ -3,12 +3,10 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
-const gui = new dat.GUI({width:400,height:1000})
-var guiDom = gui.domElement;
+// const gui = new dat.GUI({width:400,height:1000})
+// var guiDom = gui.domElement;
 // Position the GUI panel
-guiDom.style.position = 'absolute'; // Set the position to absolute
-guiDom.style.top = '10px';          // Distance from the top of the screen
-guiDom.style.left = '10px';  
+
 
 const gltfLoader = new GLTFLoader()
 
@@ -54,7 +52,7 @@ gltfLoader.load(
               if (child.material.isMeshStandardMaterial) {
                 // Set the metalness and roughness
                 child.material.metalness = 0.1; // Example value for metalness
-                child.material.roughness = 0.2; // Example value for roughness
+                child.material.roughness = 0; // Example value for roughness
               }
             }
           });
@@ -64,6 +62,33 @@ gltfLoader.load(
            
             
            function shoeanimate(){
+
+            var data = document.querySelectorAll("#page3 h2")
+
+data.forEach(function(elem){
+  var datatext = elem.textContent;
+  var splitedcontent  = datatext.split("");
+  var clutter = "";
+  splitedcontent.forEach(function(e){
+    clutter += `<span>${e}</span>`
+  })
+  elem.innerHTML = clutter;
+
+})
+
+gsap.to("#page3 h2 span",{
+    color:"#434B34",
+    stagger:0.2,
+    scrollTrigger:{
+        scroller:"body",
+        trigger:"#page3 ",
+        scrub:2,
+        // markers:true,
+        start:"top 40%",
+        end:"top 10%"
+    }
+})
+            
             let tl2 = gsap.timeline({
                 scrollTrigger:{
                     scroller:"#main",
@@ -99,11 +124,7 @@ gltfLoader.load(
             tl2.to(model.position,{
                 y:0,
             },"var")
-            // tl2.to(model.rotation,{
-            //     x:model.rotation.x + 2,
-            //     duration:1,
-            //     delay:0.05
-            // },"var")
+    
             tl2.to(model.rotation,{
                 z:-0.5,
                 x:0.5,
@@ -112,15 +133,30 @@ gltfLoader.load(
                 // duration:1.5,
             },"var2")
             tl2.to(model.scale,{
-                x:10,
-                y:10,
-                z:10,
+                x:11,
+                y:11,
+                z:11,
                 duration:1.5,
+                delay:-1.8
             },"var2")
             tl2.to(model.position,{
                 x:-0.8,
                 z:0,
                 duration:1.5,
+                delay:-1.8
+            },"var2")
+            tl2.from("#page1 #infotext1 h1",{
+                opacity:0,
+                scale:"1.3",
+                duration:0.5,
+                delay:-1
+            },"var2")
+            tl2.from("#page1 #infotext1 h2,#page1 #infotext1 h3",{
+                opacity:0,
+                scale:"1.3",
+                duration:0.5,
+                delay:-1,
+                stagger:0.2,
             },"var2")
             // tl2.to(model.rotation,{
             //     x:-0.4,
@@ -130,7 +166,8 @@ gltfLoader.load(
            }
            shoeanimate()
             
-           gui.add(gltf.scene.position,'x').min(-8).max(8).step(0.2).name('shoePositionX')
+           function guicall(){
+            gui.add(gltf.scene.position,'x').min(-8).max(8).step(0.2).name('shoePositionX')
            gui.add(gltf.scene.position,'y').min(-8).max(8).step(0.2).name('shoePositionY')
            gui.add(gltf.scene.position,'z').min(-8).max(8).step(0.2).name('shoePositionZ')
            gui.add(gltf.scene.scale,'x').min(0).max(8).step(0.2).name('shoeScaleX')
@@ -141,6 +178,8 @@ gltfLoader.load(
            gui.add(gltf.scene.rotation,'z').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationZ')
 
            
+           }
+        //    guicall()
     },
     
 )

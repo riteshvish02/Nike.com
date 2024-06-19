@@ -113,6 +113,54 @@ img{
     align-items: center;
     justify-content: center;
 }
+#page1 #infotext1{
+    position: absolute;
+    padding-top: 5vh;
+    right: 0;
+    top: 0;
+    width: 50%;
+    z-index: 9999999999999999999!important;
+    height: 65vh;
+    /* background: #000;
+    border */
+    /* border: #272521 1px solid; */
+}
+#page1 #infotext1 h1{
+    font-size: 8vh;
+    font-family: nike;
+
+    color: #AE626E;
+    background: #000;
+    display: inline-block;
+    margin: 3px;
+    text-transform: uppercase;
+    padding:0 15px;
+}
+
+#page1 #infotext1 h2{
+    font-size: 6.5vh;
+    font-weight: 550;
+    font-family: nike2;
+    color:black;
+    /* background: #000; */
+    display: inline-block;
+    text-transform: uppercase;
+    margin: 3px;
+}
+
+
+#page1 #infotext1 h3{
+    font-size: 3.5vh;
+    margin-top: 3vh!important;
+    width: 80%;
+    font-weight: 550;
+    font-family: nike2;
+    text-transform: uppercase;
+    color:black;
+    /* background: #000; */
+    display: inline-block;
+    margin: 3px;
+}
 #page1 #text1{
    
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 80%);
