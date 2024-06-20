@@ -52,7 +52,7 @@ gltfLoader.load(
               if (child.material.isMeshStandardMaterial) {
                 // Set the metalness and roughness
                 child.material.metalness = 0.1; // Example value for metalness
-                child.material.roughness = 0; // Example value for roughness
+                child.material.roughness = 0.5; // Example value for roughness
               }
             }
           });
@@ -62,32 +62,7 @@ gltfLoader.load(
            
             
            function shoeanimate(){
-
-            var data = document.querySelectorAll("#page3 h2")
-
-data.forEach(function(elem){
-  var datatext = elem.textContent;
-  var splitedcontent  = datatext.split("");
-  var clutter = "";
-  splitedcontent.forEach(function(e){
-    clutter += `<span>${e}</span>`
-  })
-  elem.innerHTML = clutter;
-
-})
-
-gsap.to("#page3 h2 span",{
-    color:"#434B34",
-    stagger:0.2,
-    scrollTrigger:{
-        scroller:"body",
-        trigger:"#page3 ",
-        scrub:2,
-        // markers:true,
-        start:"top 40%",
-        end:"top 10%"
-    }
-})
+            const isMobile = window.innerWidth <= 768;
             
             let tl2 = gsap.timeline({
                 scrollTrigger:{
@@ -100,69 +75,65 @@ gsap.to("#page3 h2 span",{
                     pin:true
                 }
             })
-            tl2.to("#mount1",{
+            tl2
+            .to("#mount1",{
                 x:-440,
                 duration:1.5,
             },"var")
-            tl2.to("#mount2",{
+            .to("#mount2",{
                 x:440,
                 duration:1.5,
             },"var")
-            tl2.to("#page1 #text .texts",{
+            .to("#page1 #text .texts",{
                opacity:"0",
             },"var")
-            tl2.to('.cld',{
+            .to('.cld',{
                 y:-800,
                 duration:2,
                 // backgroundColor:'red'
             },"var")
-            tl2.to('#page1 #cloudanimate',{
+            .to('#page1 #cloudanimate',{
                 bottom : 0,
                 duration:2,
                 // backgroundColor:'red'
             },"var")
-            tl2.to(model.position,{
+            .to(model.position,{
                 y:0,
             },"var")
     
-            tl2.to(model.rotation,{
+            .to(model.rotation,{
                 z:-0.5,
                 x:0.5,
                 y:1,
                 delay:-1.8
                 // duration:1.5,
             },"var2")
-            tl2.to(model.scale,{
-                x:11,
-                y:11,
-                z:11,
+            .to(model.scale,{
+                x: isMobile ? 5 : 11,
+                y: isMobile ? 5 : 11,
+                z: isMobile ? 5 : 11,
                 duration:1.5,
                 delay:-1.8
             },"var2")
-            tl2.to(model.position,{
-                x:-0.8,
+            .to(model.position,{
+                x:isMobile ? -0.5 : -1.2,
                 z:0,
                 duration:1.5,
                 delay:-1.8
             },"var2")
-            tl2.from("#page1 #infotext1 h1",{
+            .from("#page1 #infotext1 h1",{
                 opacity:0,
                 scale:"1.3",
                 duration:0.5,
                 delay:-1
             },"var2")
-            tl2.from("#page1 #infotext1 h2,#page1 #infotext1 h3",{
+            .from("#page1 #infotext1 h2,#page1 #infotext1 h3",{
                 opacity:0,
                 scale:"1.3",
                 duration:0.5,
                 delay:-1,
                 stagger:0.2,
             },"var2")
-            // tl2.to(model.rotation,{
-            //     x:-0.4,
-            //     z:0.6,
-            //     duration:1.5,
-            // },"var2")
            }
            shoeanimate()
             
@@ -180,6 +151,7 @@ gsap.to("#page3 h2 span",{
            
            }
         //    guicall()
+        
     },
     
 )
@@ -247,7 +219,7 @@ function adjustModelForScreen() {
         const aspectRatio = window.matchMedia("(max-width: 768px)").matches
         console.log(aspectRatio);
         if (aspectRatio) { // Portrait mode
-            model.scale.set(0.25, 0.25, 0.25)
+            model.scale.set(3, 3, 3)
         } else { // Landscape mode
             model.scale.set(7.5, 7.5, 7.5)
         }

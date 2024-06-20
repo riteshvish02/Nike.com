@@ -24,8 +24,8 @@ module.exports = {
             minify: true
         }),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '../src/work.html'),
-            filename: 'work.html',
+            template: path.resolve(__dirname, '../src/products.html'),
+            filename: 'products.html',
             minify: true
         }),
         new MiniCSSExtractPlugin()
