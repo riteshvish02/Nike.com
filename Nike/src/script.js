@@ -69,7 +69,7 @@ gltfLoader.load(
                     scroller:"#main",
                     trigger:"#page1",
                     start:"top 0%",
-                    end:"bottom -100%",
+                    end:"bottom -150%",
                     markers:true,
                     scrub:true,
                     pin:true
@@ -93,12 +93,13 @@ gltfLoader.load(
                 // backgroundColor:'red'
             },"var")
             .to('#page1 #cloudanimate',{
-                bottom : 0,
+                bottom : '-100%',
                 duration:2,
                 // backgroundColor:'red'
             },"var")
             .to(model.position,{
                 y:0,
+                delay:-0.1
             },"var")
     
             .to(model.rotation,{
@@ -125,7 +126,7 @@ gltfLoader.load(
                 opacity:0,
                 scale:"1.3",
                 duration:0.5,
-                delay:-1
+                delay:-1,
             },"var2")
             .from("#page1 #infotext1 h2,#page1 #infotext1 h3",{
                 opacity:0,
@@ -134,6 +135,28 @@ gltfLoader.load(
                 delay:-1,
                 stagger:0.2,
             },"var2")
+            .to("#page1 #infotext1 h2,#page1 #infotext1 h3,#page1 #infotext1 h1",{
+                opacity:0,
+                scale:"1.3",
+                duration:0.1,
+            },"var2")
+            .to(model.position,{
+                x:isMobile ? 0.5 : 1.3,
+                y:0.15,
+                duration:1.5,
+            },"var3")
+            .to('#page1 #cloudanimate',{
+                bottom : '0%',
+                duration:2,
+                // backgroundColor:'red'
+            },"var3")
+            .to(model.rotation,{
+                x:1.1,
+                y:-1.3,
+                z:1,
+                duration:1.5,
+            },"var3")
+           
            }
            shoeanimate()
             

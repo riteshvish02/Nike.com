@@ -355,15 +355,15 @@ img{
 }
 #page1 #cloudanimate{
     width: 100%;
-    height: 100%;
-    bottom:-100% ;
+    height: 300%!important;
+    bottom:-300% ;
     pointer-events: none;
     /* top: 20%; */
     /* background: #000; */
     background-image: url('../static/assets/clouds/cloud-anim-3.def7f08a.webp');
     background-size: cover;
     background-position: center;
-    left: 0;
+    left: 0!important;
     position: absolute;
     z-index: 99999999;
 }
@@ -388,6 +388,24 @@ img{
     top: 10%;
     position: absolute;
 }
+
+#page1 #cloudanimate #clds7{
+    left: 0%;
+    top:20%;
+    position: absolute;
+}
+#page1 #cloudanimate #clds8{
+    left: 0%;
+    bottom:-10%;
+    position: absolute;
+}
+#page1 #cloudanimate #clds9{
+    right: 0%;
+    bottom:-10%;
+    position: absolute;
+}
+
+
 
 #page2{
     width: 100vw;
