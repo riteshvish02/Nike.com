@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
-// const gui = new dat.GUI({width:400,height:1000})
+const gui = new dat.GUI({width:400,height:1000})
 // var guiDom = gui.domElement;
 // Position the GUI panel
 
@@ -51,8 +51,8 @@ gltfLoader.load(
               // Ensure the material is a standard material
               if (child.material.isMeshStandardMaterial) {
                 // Set the metalness and roughness
-                child.material.metalness = 0.1; // Example value for metalness
-                child.material.roughness = 0.5; // Example value for roughness
+                child.material.metalness = 0.3; // Example value for metalness
+                child.material.roughness = 1; // Example value for roughness
               }
             }
           });
@@ -69,8 +69,8 @@ gltfLoader.load(
                     scroller:"#main",
                     trigger:"#page1",
                     start:"top 0%",
-                    end:"bottom -150%",
-                    markers:true,
+                    end:"bottom -400%",
+                    // markers:true,
                     scrub:true,
                     pin:true
                 }
@@ -146,19 +146,106 @@ gltfLoader.load(
                 duration:1.5,
             },"var3")
             .to('#page1 #cloudanimate',{
-                bottom : '0%',
+                bottom : '-50%',
                 duration:2,
                 // backgroundColor:'red'
             },"var3")
             .to(model.rotation,{
-                x:1.1,
-                y:-1.3,
+                x:1.3,
+                y:-0.8,
                 z:1,
-                duration:1.5,
+                duration:2,
             },"var3")
-           
+            .from("#page1 #infotext2 h1",{
+                opacity:0,
+                scale:"1.3",
+                duration:0.5,
+                delay:-1,
+            },"var4")
+            .from("#page1 #infotext2 h2,#page1 #infotext2 h3",{
+                opacity:0,
+                scale:"1.3",
+                duration:0.5,
+                delay:-1,
+                stagger:0.2,
+            },"var4")
+            .to("#page1 #infotext2 h2,#page1 #infotext2 h3,#page1 #infotext2 h1",{
+                opacity:0,
+                scale:"1.3",
+                duration:0.1,
+            },"var4")
+            
+            .to(model.position,{
+                x:-0,
+                y:-0.5,
+                duration:2,
+            },"var5")
+            .to('#page1 #cloudanimate',{
+                bottom : '0%',
+                duration:2,
+                // backgroundColor:'red'
+            },"var5")
+            .to(model.rotation,{
+                x:0.4,
+                y:1.5,
+                z:-0.2,
+                duration:2,
+             },"var5")
+            .to('#main',{
+                zIndex:"999999999999999999999999999999999999999999999",
+                duration:1,
+                delay:1,
+             },"var6")
+        //          .to(model.scale,{
+        //     x:6,
+        //     y:6,
+        //     z:6,
+        //     duration:1,
+        // },"v7")
+        // .to(model.rotation,{
+        //     x:-Math.PI/2,
+        //     duration:1,
+        // },"v7")
+        // .to(model.position,{
+        //     y:-2,
+        //     duration:1,
+        // },"v7")
+       
            }
            shoeanimate()
+
+        //    let tl = gsap.timeline({
+        //     scrollTrigger:{
+        //         scroller:"#main",
+        //         trigger:"#page2",
+        //         start:"-50% bottom",
+        //         end:"top 0%",
+        //         markers:true,
+        //         scrub:true,
+        //     }
+        //    })
+
+        //    tl
+        //    .to('#main',{
+        //       zIndex:"999999999999999999999999999999999999999999999",
+        //       duration:0.1,
+        //    },"var6")
+        //    .to(model.scale,{
+        //     x:6,
+        //     y:6,
+        //     z:6,
+        //     duration:1,
+        // },"var6")
+        // .to(model.rotation,{
+        //     x:-Math.PI/2,
+        //     duration:1,
+        // },"var6")
+        // .to(model.position,{
+        //     y:-2,
+        //     duration:1,
+        // },"var6")
+       
+          
             
            function guicall(){
             gui.add(gltf.scene.position,'x').min(-8).max(8).step(0.2).name('shoePositionX')
@@ -173,7 +260,7 @@ gltfLoader.load(
 
            
            }
-        //    guicall()
+           guicall()
         
     },
     

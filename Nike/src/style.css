@@ -124,6 +124,14 @@ img{
 
 }
 
+.highest-zindex {
+    z-index: 999999999999999999999999999999999999999999999999 !important;
+   background: #000;
+  }
+  
+  .lowest-zindex {
+    z-index: 1!important;
+  }
 
 .webgl
 {
@@ -221,6 +229,62 @@ img{
     display: inline-block;
     margin: 3px;
 }
+
+#page1 #infotext2{
+    position: absolute;
+    padding-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    left: 0!important;
+    bottom: 0!important;
+    padding-left: 1%;
+    width: 45%;
+    z-index: 9999999999999999999!important;
+    height: 65vh;
+    /* background: #000;
+    border */
+    /* border: #272521 1px solid; */
+}
+
+
+#page1 #infotext2 h1{
+    font-size: 8vh;
+    font-family: nike;
+    white-space: nowrap;
+    color: #AE626E;
+    background: #000;
+    display: inline-block;
+    margin: 3px;
+    text-transform: uppercase;
+    padding:0 15px;
+}
+
+#page1 #infotext2 h2{
+    font-size: 6.5vh;
+    font-weight: 550;
+    font-family: nike2;
+    color:black;
+    white-space: nowrap;
+    /* background: #000; */
+    display: inline-block;
+    text-transform: uppercase;
+    margin: 3px;
+}
+
+
+#page1 #infotext2 h3{
+    font-size: 3.5vh;
+    margin-top: 3vh!important;
+    width: 80%;
+    font-weight: 550;
+    font-family: nike2;
+    text-transform: uppercase;
+    color:black;
+    /* background: #000; */
+    display: inline-block;
+    margin: 3px;
+}
+
 #page1 #text1{
    
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 80%);
@@ -355,8 +419,8 @@ img{
 }
 #page1 #cloudanimate{
     width: 100%;
-    height: 300%!important;
-    bottom:-300% ;
+    height: 400%!important;
+    bottom:-400% ;
     pointer-events: none;
     /* top: 20%; */
     /* background: #000; */
@@ -410,14 +474,23 @@ img{
 #page2{
     width: 100vw;
     height: 100vh;
-    /* background-color: red;    */
-    background-image: url('../static/assets/clouds/cloud-light-1.webp');
+    background-color:#0C0B0A;   
     background-size: cover;
     background-position: center;
     position: relative!important;
-    z-index: 9999999999!important;
+    /* overflow: hidden; */
+   
 }
-
+#page2 img{
+    width: 100%;
+    left: 0!important;
+    object-fit: cover;
+    top: -100%!important;
+    position: absolute;
+    z-index: 999999999999999999999;
+    /* background: red; */
+    object-position: center;
+}
 
 
 
