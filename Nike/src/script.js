@@ -51,8 +51,8 @@ gltfLoader.load(
               // Ensure the material is a standard material
               if (child.material.isMeshStandardMaterial) {
                 // Set the metalness and roughness
-                child.material.metalness = 0.3; // Example value for metalness
-                child.material.roughness = 1; // Example value for roughness
+                child.material.metalness = 0.6; // Example value for metalness
+                child.material.roughness = 2; // Example value for roughness
               }
             }
           });
@@ -69,7 +69,7 @@ gltfLoader.load(
                     scroller:"#main",
                     trigger:"#page1",
                     start:"top 0%",
-                    end:"bottom -400%",
+                    end:"bottom -500%",
                     // markers:true,
                     scrub:true,
                     pin:true
@@ -142,7 +142,7 @@ gltfLoader.load(
             },"var2")
             .to(model.position,{
                 x:isMobile ? 0.5 : 1.3,
-                y:0.15,
+                y:0.19999,
                 duration:1.5,
             },"var3")
             .to('#page1 #cloudanimate',{
@@ -191,12 +191,28 @@ gltfLoader.load(
                 z:-0.2,
                 duration:2,
              },"var5")
-            .to('#main',{
-                zIndex:"999999999999999999999999999999999999999999999",
-                duration:1,
-                delay:1,
-             },"var6")
-        //          .to(model.scale,{
+             
+         .to(model.position,{
+            y:-1,
+            duration:1,
+            delay:-0.2,
+        },"var6")
+         .to(model.scale,{
+            x:5,
+            y:5,
+            z:5,
+            duration:1,
+            delay:-0.2,
+            
+        },"var6") 
+        
+        .to(model.rotation,{
+             x:-Math.PI/2,
+            duration:2,
+            delay:-0.2,
+        },"var6")
+           
+        //.to(model.scale,{
         //     x:6,
         //     y:6,
         //     z:6,
@@ -214,22 +230,27 @@ gltfLoader.load(
            }
            shoeanimate()
 
-        //    let tl = gsap.timeline({
-        //     scrollTrigger:{
-        //         scroller:"#main",
-        //         trigger:"#page2",
-        //         start:"-50% bottom",
-        //         end:"top 0%",
-        //         markers:true,
-        //         scrub:true,
-        //     }
-        //    })
+           let tl = gsap.timeline({
+            scrollTrigger:{
+                scroller:"#main",
+                trigger:"#page2 img",
+                start:"50% 83%",
+                end:"50% 60%",
+                markers:true,
+                scrub:true,
+            }
+           })
 
-        //    tl
-        //    .to('#main',{
-        //       zIndex:"999999999999999999999999999999999999999999999",
-        //       duration:0.1,
-        //    },"var6")
+           tl
+           .to(model.position,{
+            y:-2,
+            duration:2,
+           })
+           .to('#main',{
+              zIndex:"999999999999999999999999999999999999999999999999",
+              duration:0.3,
+              delay:-1.4
+           })
         //    .to(model.scale,{
         //     x:6,
         //     y:6,
@@ -260,7 +281,7 @@ gltfLoader.load(
 
            
            }
-           guicall()
+        //    guicall()
         
     },
     
