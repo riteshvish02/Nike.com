@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
-const gui = new dat.GUI({width:400,height:1000})
+// const gui = new dat.GUI({width:400,height:1000})
 // var guiDom = gui.domElement;
 // Position the GUI panel
 
@@ -69,13 +69,17 @@ gltfLoader.load(
                     scroller:"#main",
                     trigger:"#page1",
                     start:"top 0%",
-                    end:"bottom -500%",
+                    end:"bottom -800%",
                     // markers:true,
                     scrub:true,
                     pin:true
                 }
             })
             tl2
+            .to(".webgl",{
+                top:0,
+                left:0,
+            },"var")
             .to("#mount1",{
                 x:-440,
                 duration:1.5,
@@ -101,7 +105,6 @@ gltfLoader.load(
                 y:0,
                 delay:-0.1
             },"var")
-    
             .to(model.rotation,{
                 z:-0.5,
                 x:0.5,
@@ -138,7 +141,7 @@ gltfLoader.load(
             .to("#page1 #infotext1 h2,#page1 #infotext1 h3,#page1 #infotext1 h1",{
                 opacity:0,
                 scale:"1.3",
-                duration:0.1,
+                duration:0.5,
             },"var2")
             .to(model.position,{
                 x:isMobile ? 0.5 : 1.3,
@@ -147,6 +150,7 @@ gltfLoader.load(
             },"var3")
             .to('#page1 #cloudanimate',{
                 bottom : '-50%',
+                left:"0",
                 duration:2,
                 // backgroundColor:'red'
             },"var3")
@@ -172,18 +176,17 @@ gltfLoader.load(
             .to("#page1 #infotext2 h2,#page1 #infotext2 h3,#page1 #infotext2 h1",{
                 opacity:0,
                 scale:"1.3",
-                duration:0.1,
+                duration:0.5,
             },"var4")
-            
             .to(model.position,{
                 x:-0,
                 y:-0.5,
                 duration:2,
             },"var5")
             .to('#page1 #cloudanimate',{
-                bottom : '0%',
+                bottom :'0%',
+                left:"0",
                 duration:2,
-                // backgroundColor:'red'
             },"var5")
             .to(model.rotation,{
                 x:0.4,
@@ -191,97 +194,33 @@ gltfLoader.load(
                 z:-0.2,
                 duration:2,
              },"var5")
-             
-         .to(model.position,{
-            y:-1,
+        .to(model.scale,{
+            x:6,
+            y:6,
+            z:6,
             duration:1,
-            delay:-0.2,
-        },"var6")
-         .to(model.scale,{
-            x:5,
-            y:5,
-            z:5,
-            duration:1,
-            delay:-0.2,
-            
-        },"var6") 
-        
+        },"v7")
         .to(model.rotation,{
-             x:-Math.PI/2,
-            duration:2,
-            delay:-0.2,
-        },"var6")
-           
-        //.to(model.scale,{
-        //     x:6,
-        //     y:6,
-        //     z:6,
-        //     duration:1,
-        // },"v7")
-        // .to(model.rotation,{
-        //     x:-Math.PI/2,
-        //     duration:1,
-        // },"v7")
-        // .to(model.position,{
-        //     y:-2,
-        //     duration:1,
-        // },"v7")
+            x:-Math.PI/2,
+            duration:1,
+        },"v7")
+        .to(model.position,{
+            y:-2,
+            duration:1,
+        },"v7")
        
+
+
+        
            }
            shoeanimate()
 
-           let tl = gsap.timeline({
-            scrollTrigger:{
-                scroller:"#main",
-                trigger:"#page2 img",
-                start:"50% 83%",
-                end:"50% 60%",
-                markers:true,
-                scrub:true,
-            }
-           })
-
-           tl
-           .to(model.position,{
-            y:-2,
-            duration:2,
-           })
-           .to('#main',{
-              zIndex:"999999999999999999999999999999999999999999999999",
-              duration:0.3,
-              delay:-1.4
-           })
-        //    .to(model.scale,{
-        //     x:6,
-        //     y:6,
-        //     z:6,
-        //     duration:1,
-        // },"var6")
-        // .to(model.rotation,{
-        //     x:-Math.PI/2,
-        //     duration:1,
-        // },"var6")
-        // .to(model.position,{
-        //     y:-2,
-        //     duration:1,
-        // },"var6")
+          
+       
        
           
             
-           function guicall(){
-            gui.add(gltf.scene.position,'x').min(-8).max(8).step(0.2).name('shoePositionX')
-           gui.add(gltf.scene.position,'y').min(-8).max(8).step(0.2).name('shoePositionY')
-           gui.add(gltf.scene.position,'z').min(-8).max(8).step(0.2).name('shoePositionZ')
-           gui.add(gltf.scene.scale,'x').min(0).max(8).step(0.2).name('shoeScaleX')
-           gui.add(gltf.scene.scale,'y').min(0).max(8).step(0.2).name('shoeScaleY')
-           gui.add(gltf.scene.scale,'z').min(0).max(8).step(0.2).name('shoeScaleZ')
-           gui.add(gltf.scene.rotation,'x').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationX')
-           gui.add(gltf.scene.rotation,'y').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationY')
-           gui.add(gltf.scene.rotation,'z').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationZ')
-
-           
-           }
-        //    guicall()
+       
         
     },
     

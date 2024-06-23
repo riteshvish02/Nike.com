@@ -121,8 +121,11 @@ img{
     display: inline-block;
     margin: 3px;
 }
-
+/* #mountcover {
+    display: none;
+} */
 }
+
 
 
 .webgl
@@ -132,12 +135,30 @@ img{
    overflow: hidden;
    display: block;
    pointer-events: none;
+   padding: 1px;
    position: fixed;
    top: 0%;
    left: 0%;
    right: 0;
    bottom: 0;
-   z-index: 999999999999999999999999999!important;
+   z-index: 99999999999999999999999999999999999999999999999999!important;
+}
+#mountcover{
+    width: 100%;
+    height: 100%;
+    position: absolute!important;
+    bottom: -100%!important;
+    background: #0C0B0A;
+   pointer-events: none;
+    left: 0!important;
+    z-index: 99999999999999999999999999999999999999999999999999!important;
+}
+
+#mountcover #img{
+    width: 100%;
+    object-fit: cover;
+  
+    object-position: center;
 }
 #main::-webkit-scrollbar{
     display: none!important;
@@ -221,6 +242,62 @@ img{
     display: inline-block;
     margin: 3px;
 }
+
+#page1 #infotext2{
+    position: absolute;
+    padding-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    left: 0!important;
+    bottom: 0!important;
+    padding-left: 1%;
+    width: 45%;
+    z-index: 9999999999999999999!important;
+    height: 65vh;
+    /* background: #000;
+    border */
+    /* border: #272521 1px solid; */
+}
+
+
+#page1 #infotext2 h1{
+    font-size: 8vh;
+    font-family: nike;
+    white-space: nowrap;
+    color: #AE626E;
+    background: #000;
+    display: inline-block;
+    margin: 3px;
+    text-transform: uppercase;
+    padding:0 15px;
+}
+
+#page1 #infotext2 h2{
+    font-size: 6.5vh;
+    font-weight: 550;
+    font-family: nike2;
+    color:black;
+    white-space: nowrap;
+    /* background: #000; */
+    display: inline-block;
+    text-transform: uppercase;
+    margin: 3px;
+}
+
+
+#page1 #infotext2 h3{
+    font-size: 3.5vh;
+    margin-top: 3vh!important;
+    width: 80%;
+    font-weight: 550;
+    font-family: nike2;
+    text-transform: uppercase;
+    color:black;
+    /* background: #000; */
+    display: inline-block;
+    margin: 3px;
+}
+
 #page1 #text1{
    
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 80%);
@@ -355,8 +432,8 @@ img{
 }
 #page1 #cloudanimate{
     width: 100%;
-    height: 300%!important;
-    bottom:-300% ;
+    height: 400%!important;
+    bottom:-400% ;
     pointer-events: none;
     /* top: 20%; */
     /* background: #000; */
@@ -410,12 +487,12 @@ img{
 #page2{
     width: 100vw;
     height: 100vh;
-    /* background-color: red;    */
-    background-image: url(6047a48c2306344d.webp);
+    background-color:#0C0B0A;   
     background-size: cover;
     background-position: center;
     position: relative!important;
-    z-index: 9999999999!important;
+    /* overflow: hidden; */
+   
 }
 
 
