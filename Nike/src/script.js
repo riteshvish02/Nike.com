@@ -63,7 +63,11 @@ gltfLoader.load(
             
            function shoeanimate(){
             const isMobile = window.innerWidth <= 768;
-            
+            gsap.from("#page1 #text",{
+                opacity:"0",
+                scale:1.2,
+                duration:1.2
+            })
             let tl2 = gsap.timeline({
                 scrollTrigger:{
                     scroller:"#main",
@@ -76,6 +80,7 @@ gltfLoader.load(
                 }
             })
             tl2
+         
             .to(".webgl",{
                 top:0,
                 left:0,
@@ -87,6 +92,14 @@ gltfLoader.load(
             .to("#mount2",{
                 x:440,
                 duration:1.5,
+            },"var")
+            .to("#mount1",{
+                x:-440,
+                duration:1.5,
+            },"var")
+            .from("#mount3",{
+                y:110,
+                duration:1,
             },"var")
             .to("#page1 #text .texts",{
                opacity:"0",
