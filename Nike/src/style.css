@@ -65,26 +65,78 @@ img{
     -o-object-fit: cover;
        object-fit: cover;
 }
-#page1 #mountain #mount1{
+#page1 #mountain #mount2{
     height: 100%;
-    width: 100%;
-    margin-right: 13%;
+    width: 80%;
+    right: -60%!important;
+    position: absolute;
     -o-object-fit: cover;
        object-fit: cover;
 }
 
+#page1 #infotext2{
+    position: absolute;
+    padding-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    left: 3%!important;
+    top: 20%!important;
+
+    width: 55%!important;
+    z-index: 9999999999999999999!important;
+    height: 43vh!important;
+}
+
+
+#page1 #infotext2 h1{
+    font-size: 2vh!important;
+    font-family: nike;
+    white-space: nowrap;
+    color: #AE626E;
+    background: #000;
+    display: inline-block;
+    width: fit-content;
+    margin: 3px;
+    text-transform: uppercase;
+}
+
+#page1 #infotext2 h2{
+    font-size: 3vh!important;
+    font-weight: 550;
+    font-family: nike2;
+    color:black;
+    white-space: nowrap;
+    /* background: #000; */
+    display: inline-block;
+    text-transform: uppercase;
+    margin: 3px;
+}
+
+
+#page1 #infotext2 h3{
+    font-size: 1.4vh!important;
+    margin-top: 3vh!important;
+    width: 80%;
+    font-weight: 550;
+    font-family: nike2;
+    text-transform: uppercase;
+    color:black;
+    /* background: #000; */
+    display: inline-block;
+    margin: 3px;
+}
 
 #page1 #infotext1{
     position: absolute;
     padding-top: 5vh;
     display: flex;
     flex-direction: column;
-    right: 0%!important;
+    right: 8%!important;
     top: 20%!important;
 
-    width: 60%!important;
+    width: 55%!important;
     z-index: 9999999999999999999!important;
-    height: 45vh!important;
+    height: 43vh!important;
 }
 #page1 #infotext1 h1{
     font-size: 2vh!important;
@@ -112,7 +164,7 @@ img{
 
 
 #page1 #infotext1 h3{
-    font-size: 1.2vh!important;
+    font-size: 1.4vh!important;
     margin-top: 3vh!important;
     width: 80%;
     font-weight: 550;
@@ -206,7 +258,7 @@ img{
     font-size: 8vh;
     font-family: nike;
     white-space: nowrap;
-    color: #AE626E;
+    color: #80964E;
     background: #000;
     display: inline-block;
     margin: 3px;
@@ -239,15 +291,17 @@ img{
     display: inline-block;
     margin: 3px;
 }
-
+#atag{
+    position: fixed;
+    top: 0;
+}
 #page1 #infotext2{
     position: absolute;
     padding-top: 5vh;
     display: flex;
     flex-direction: column;
     left: 0!important;
-    bottom: 0!important;
-    padding-left: 1%;
+    bottom: 15%!important;
     width: 45%;
     z-index: 9999999999999999999!important;
     height: 65vh;
@@ -261,7 +315,7 @@ img{
     font-size: 8vh;
     font-family: nike;
     white-space: nowrap;
-    color: #AE626E;
+    color: #80964E;
     background: #000;
     display: inline-block;
     margin: 3px;
@@ -346,6 +400,82 @@ img{
     z-index: 9999999999999;
    
 }
+#page1 #infotext3 {
+  width: 100%;
+  height: 50%;
+  /* background: red; */
+  
+  position: absolute;
+  z-index: 9999999999999999999!important; 
+  bottom: 0!important;
+}
+#page1 #infotext3 #line{
+    width: 20%;
+    position: absolute;
+    right:25%;
+    top: 40%;
+    height: 2px;
+}
+#page1 #infotext3 #line #childline{
+    width: 100%;
+    height: 100%;
+    background:black ;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
+
+#page1 #infotext3 #line2{
+    width: 20%;
+    position: absolute;
+    right:22%;
+    top: 50%;
+    height: 1.8px;
+}
+#page1 #infotext3 #line2 #childline{
+    width: 100%;
+    height: 100%;
+    background:black ;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
+
+#page1 #infotext3 #line3{
+    width: 20%;
+    position: absolute;
+    left:23%;
+    /* background: red; */
+    top: 65%;
+    
+    height: 2px;
+}
+#page1 #infotext3 #line3 #childline{
+    width: 100%;
+    height: 100%;
+    background:black ;
+
+    clip-path: polygon(100% 0, 100% 0%, 100% 100%, 100% 100%);
+}
+#page1 #infotext3 h2{
+    font-size: 3vh;
+    float: right;
+    margin-right: -35%!important;
+    margin-top: -5%!important;
+    opacity: 0;
+}
+#page1 #infotext3 h3{
+    font-size: 3vh;
+    float: right;
+    margin-right: -25%!important;
+    margin-top: -5%!important;
+    opacity: 0;
+}
+#page1 #infotext3 #line3 h2{
+    font-size: 3vh;
+    float: left;
+    margin-left: -42%!important;
+    margin-top: -5%!important;
+    opacity: 0;
+}
 #page1 #mountain{
     width: 100%;
     height: 100%;
@@ -361,7 +491,7 @@ img{
 #page1 #mountain #mount3{
     position: absolute!important;
     z-index: -1!important;
-    bottom: -28%!important;
+    bottom: -20%!important;
 }
 
 

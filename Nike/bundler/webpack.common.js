@@ -1,23 +1,20 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
-const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 
 module.exports = {
-    entry:{ 
+    entry: {
         main: path.resolve(__dirname, '../src/script.js'),
-        products: path.resolve(__dirname, '../src/javascripts/products.js') // Updated to point to the correct JS file
-  
+        products: path.resolve(__dirname, '../src/javascripts/products.js')
     },
-    output:
-    {
+    output: {
         hashFunction: 'xxhash64',
-        filename: 'bundle.[contenthash].js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, '../dist')
     },
     devtool: 'source-map',
-    plugins:
-    [
+    plugins: [
         new CopyWebpackPlugin({
             patterns: [
                 { from: path.resolve(__dirname, '../static') }
@@ -25,54 +22,44 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../src/index.html'),
+            filename: 'index.html',
+            chunks: ['main'],
             minify: true
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../src/products.html'),
             filename: 'products.html',
+            chunks: ['products'],
             minify: true
         }),
         new MiniCSSExtractPlugin()
     ],
-    module:
-    {
-        rules:
-        [
+    module: {
+        rules: [
             // HTML
             {
                 test: /\.(html)$/,
-                use:
-                [
-                    'html-loader'
-                ]
+                use: ['html-loader']
             },
 
             // JS
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use:
-                [
-                    'babel-loader'
-                ]
+                use: ['babel-loader']
             },
 
             // CSS
             {
                 test: /\.css$/,
-                use:
-                [
-                    MiniCSSExtractPlugin.loader,
-                    'css-loader'
-                ]
+                use: [MiniCSSExtractPlugin.loader, 'css-loader']
             },
 
             // Images
             {
                 test: /\.(jpg|png|gif|svg)$/,
                 type: 'asset/resource',
-                generator:
-                {
+                generator: {
                     filename: 'assets/images/[hash][ext]'
                 }
             },
@@ -81,8 +68,7 @@ module.exports = {
             {
                 test: /\.(ttf|eot|woff|woff2)$/,
                 type: 'asset/resource',
-                generator:
-                {
+                generator: {
                     filename: 'assets/fonts/[hash][ext]'
                 }
             },
@@ -91,11 +77,10 @@ module.exports = {
             {
                 test: /\.(glsl|vs|fs|vert|frag)$/,
                 type: 'asset/source',
-                generator:
-                {
+                generator: {
                     filename: 'assets/images/[hash][ext]'
                 }
             }
         ]
     }
-}
+};

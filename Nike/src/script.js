@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
-// const gui = new dat.GUI({width:400,height:1000})
+const gui = new dat.GUI({width:400,height:1000})
 // var guiDom = gui.domElement;
 // Position the GUI panel
 
@@ -39,20 +39,20 @@ inet();
 
 let model
 gltfLoader.load(
-    '/models/nike_air_max_90 (2)/scene.gltf',
+    '/models/sneakers/scene.gltf',
     (gltf)=>{
         model = gltf.scene
         gltf.scene.scale.set(10,10,10)
         console.log(gltf);
         gltf.scene.position.set(0,-2.8,0)
-        gltf.scene.rotation.set(-1,1.4,-0.40)
+        gltf.scene.rotation.set(-1.2,0,0)
         model.traverse((child) => {
             if (child.isMesh) {
               // Ensure the material is a standard material
               if (child.material.isMeshStandardMaterial) {
                 // Set the metalness and roughness
-                child.material.metalness = 0.6; // Example value for metalness
-                child.material.roughness = 2; // Example value for roughness
+                child.material.metalness = 0.2; // Example value for metalness
+                child.material.roughness = 0.8; // Example value for roughness
               }
             }
           });
@@ -93,14 +93,7 @@ gltfLoader.load(
                 x:440,
                 duration:1.5,
             },"var")
-            .to("#mount1",{
-                x:-440,
-                duration:1.5,
-            },"var")
-            .from("#mount3",{
-                y:110,
-                duration:1,
-            },"var")
+         
             .to("#page1 #text .texts",{
                opacity:"0",
             },"var")
@@ -119,16 +112,16 @@ gltfLoader.load(
                 delay:-0.1
             },"var")
             .to(model.rotation,{
-                z:-0.5,
-                x:0.5,
-                y:1,
+                z:-0.6,
+                x:0.2,
+                y:-0.5,
                 delay:-1.8
                 // duration:1.5,
             },"var2")
             .to(model.scale,{
-                x: isMobile ? 5 : 11,
-                y: isMobile ? 5 : 11,
-                z: isMobile ? 5 : 11,
+                x: isMobile ? 4 : 7,
+                y: isMobile ? 4 : 7,
+                z: isMobile ? 4 : 7,
                 duration:1.5,
                 delay:-1.8
             },"var2")
@@ -168,9 +161,9 @@ gltfLoader.load(
                 // backgroundColor:'red'
             },"var3")
             .to(model.rotation,{
-                x:1.3,
-                y:-0.8,
-                z:1,
+                x:0.2,
+                y:-2.8,
+                z:-0.8,
                 duration:2,
             },"var3")
             .from("#page1 #infotext2 h1",{
@@ -193,7 +186,7 @@ gltfLoader.load(
             },"var4")
             .to(model.position,{
                 x:-0,
-                y:-0.5,
+                y:isMobile ? -1.4 : -1.1,
                 duration:2,
             },"var5")
             .to('#page1 #cloudanimate',{
@@ -202,32 +195,75 @@ gltfLoader.load(
                 duration:2,
             },"var5")
             .to(model.rotation,{
-                x:0.4,
-                y:1.5,
+                x:0,
+                y:0,
                 z:-0.2,
                 duration:2,
              },"var5")
-        .to(model.scale,{
-            x:6,
-            y:6,
-            z:6,
-            duration:1,
-        },"v7")
-        .to(model.rotation,{
-            x:-Math.PI/2,
-            duration:1,
-        },"v7")
-        .to(model.position,{
-            y:-2,
-            duration:1,
-        },"v7")
-       
-
+             .to(model.scale,{
+                x:isMobile ? 3 :5,
+                y:isMobile ? 3 :5,
+                z:isMobile ? 3 :5,
+                duration:2,
+             },"var5")
+             .from("#mount3",{
+                y:215,
+                duration:1,
+                delay:1,
+            },"var5")
+            .to("#page1 #infotext3 #line #childline ,#page1 #infotext3 #line2 #childline",{
+                clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+                duration: 0.5,
+            },"var6")
+            .to("#page1 #infotext3 #line3 #childline ",{
+                clipPath: "polygon(10% 0, 100% 0%, 100% 100%, 10% 100%)",
+                duration: 0.5,
+            },"var6")
+            .to("#page1 #infotext3 #line h2,#page1 #infotext3 #line2 h3,#page1 #infotext3 #line3 h2",{
+                opacity:1,
+                duration: 0.1,
+            },"var7")
+            .to("#page1 #infotext3 #line #childline ,#page1 #infotext3 #line2 #childline",{
+                opacity:0,
+                duration: 2,
+            },"var8")
+            .to("#page1 #infotext3 #line3 #childline ",{
+                opacity:0,
+                duration: 2,
+            },"var8")
+            .to("#page1 #infotext3 #line h2,#page1 #infotext3 #line2 h3,#page1 #infotext3 #line3 h2",{
+                opacity:0,
+                delay:0.3,
+                duration: 1,
+            },"var8")
+            .to(model.position,{
+                y:-2.3,
+                duration: 1,
+            },"var9")
+            .to(model.rotation,{
+                x:-Math.PI/2,
+                duration: 1,
+            },"var9")
+            
+            
 
         
            }
            shoeanimate()
+           function guicall(){
+            gui.add(gltf.scene.rotation,'x').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationX')
+            gui.add(gltf.scene.rotation,'y').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationY')
+            gui.add(gltf.scene.rotation,'z').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationZ')
+            gui.add(gltf.scene.position,'x').min(-8).max(8).step(0.2).name('shoePositionX')
+           gui.add(gltf.scene.position,'y').min(-8).max(8).step(0.2).name('shoePositionY')
+           gui.add(gltf.scene.position,'z').min(-8).max(8).step(0.2).name('shoePositionZ')
+           gui.add(gltf.scene.scale,'x').min(0).max(8).step(0.2).name('shoeScaleX')
+           gui.add(gltf.scene.scale,'y').min(0).max(8).step(0.2).name('shoeScaleY')
+           gui.add(gltf.scene.scale,'z').min(0).max(8).step(0.2).name('shoeScaleZ')
+         
 
+           }
+           guicall()
           
        
        
@@ -304,7 +340,7 @@ function adjustModelForScreen() {
         if (aspectRatio) { // Portrait mode
             model.scale.set(3, 3, 3)
         } else { // Landscape mode
-            model.scale.set(7.5, 7.5, 7.5)
+            model.scale.set(5.5, 5.5, 5.5)
         }
     }
 }
@@ -402,8 +438,8 @@ const tick = () =>
     // Update controls
     // controls.update()
   
-    let parallaxX = cursor.x  * 0.25
-    let parallaxY = -cursor.y * 0.25
+    let parallaxX = cursor.x  * 0.08
+    let parallaxY = -cursor.y * 0.08
   
     camera.position.x = (parallaxX) 
     camera.position.y = (parallaxY) 
