@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let isOpen = false;
     const defaultEase = "power4.inOut";
 
-    gsap.set('.menu-logo img', { y: 50 });
     gsap.set('.menu-link p', { y: 40 });
     gsap.set('.menu-sub-item p', { y: 12 });
     gsap.set(['#img-2', '#img-3', '#img-4'], { top: '150%' });
@@ -38,12 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
             duration: 0.25,
             ease: defaultEase,
         });
-        gsap.to(".menu-logo img", {
-            y: 0,
-            duration: 1,
-            delay: 0.75,
-            ease: "power2.easeIn",
-        });
+     
         gsap.to(".menu-link p", {
             y: 0,
             duration: 1,
@@ -97,7 +91,6 @@ gsap.to('.menu',{
 
 })
 
-                gsap.set('.menu-logo img', { y: 50 });
                 gsap.set('.menu-link p', { y: 40 });
                 gsap.set('.menu-sub-item p', { y: 12 });
                 gsap.set('.menu-items', { opacity: 1, top: "0px" })

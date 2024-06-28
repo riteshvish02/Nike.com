@@ -3,11 +3,40 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
-// var guiDom = gui.domElement;
-// Position the GUI panel
+const totalItems = 7;
+const loadingBarElement  = document.querySelector('.loadingbar')
+console.log(loadingBarElement);
+const loadingManager = new THREE.LoadingManager(
+    // Loaded
+    () =>
+    {
+        // Wait a little
+        window.setTimeout(() =>
+            {
+            gsap.to('.loader', { display: 'none' });
+            // Animate overlay
 
+            // Update loadingBarElement
+            // loadingBarElement.classList.add('ended')
+            // loadingBarElement.style.transform = ''
+        }, 1000)
 
-const gltfLoader = new GLTFLoader()
+      
+    },
+
+    // Progress
+    (itemUrl, itemsLoaded, itemsTotal) =>
+    {
+        console.log("progress", itemsLoaded, itemsTotal);
+
+        // Calculate the progress and update the loadingBarElement
+        const progressRatio = itemsLoaded / totalItems;
+        console.log(progressRatio);
+    
+        loadingBarElement.style.transform = `scaleX(${progressRatio})`;
+    }
+)
+const gltfLoader = new GLTFLoader(loadingManager)
 
 //locomotive
 
@@ -37,257 +66,88 @@ inet();
 
 
 let model
-gltfLoader.load(
-    '/models/sneakers/scene.gltf',
-    (gltf)=>{
-        model = gltf.scene
-        if(model){
-            
-        gltf.scene.scale.set(10,10,10)
-        console.log(gltf);
-        gltf.scene.position.set(0,-2.8,0)
-        gltf.scene.rotation.set(-1.2,0,0)
-        model.traverse((child) => {
-            if (child.isMesh) {
-              // Ensure the material is a standard material
-              if (child.material.isMeshStandardMaterial) {
-                // Set the metalness and roughness
-                child.material.metalness = 0.2; // Example value for metalness
-                child.material.roughness = 0.8; // Example value for roughness
-              }
-            }
-          });
-        gsap.to('.loader',{
-            display:'none',
-        })
-        scene.add(gltf.scene)
-        gsap.to('#main',{
-            display:'block',
-        })
-        gsap.to('nav',{
-            display:'block',
-        })
-        
-        adjustModelForScreen()
-           
-           
-            
-           function shoeanimate(){
-            const isMobile = window.innerWidth <= 768;
-            gsap.from("#page1 #text",{
-                opacity:"0",
-                scale:1.2,
-                duration:1.2
-            })
-            let tl2 = gsap.timeline({
-                scrollTrigger:{
-                    scroller:"#main",
-                    trigger:"#page1",
-                    start:"top 0%",
-                    end:"bottom -800%",
-                    // markers:true,
-                    scrub:true,
-                    pin:true
-                }
-            })
-            tl2
-           
-            .to(".webgl",{
-                top:0,
-                left:0,
-            },"var")
-            .to("#mount1",{
-                x:-440,
-                duration:1.5,
-            },"var")
-            .to("#mount2",{
-                x:440,
-                duration:1.5,
-            },"var")
-         
-            .to("#page1 #text .texts",{
-               opacity:"0",
-            },"var")
-            .to('.cld',{
-                y:-800,
-                duration:2,
-                // backgroundColor:'red'
-            },"var")
-            .to('#page1 #cloudanimate',{
-                bottom : '-100%',
-                duration:2,
-                // backgroundColor:'red'
-            },"var")
-            .to(model.position,{
-                y:0,
-                delay:-0.1
-            },"var")
-            .to(model.rotation,{
-                z:-0.6,
-                x:0.2,
-                y:-0.5,
-                delay:-1.8
-                // duration:1.5,
-            },"var2")
-            .to(model.scale,{
-                x: isMobile ? 3.5 : 7,
-                y: isMobile ? 3.5 : 7,
-                z: isMobile ? 3.5 : 7,
-                duration:1.5,
-                delay:-1.8
-            },"var2")
-            .to(model.position,{
-                x:isMobile ? -0.5 : -1.2,
-                z:0,
-                duration:1.5,
-                delay:-1.8
-            },"var2")
-            .to("#page1 #infotext1",{
-                display:'flex',
-                duration:0.1,
-                delay:-1,
-            },"var2")
-            .from("#page1 #infotext1 h1",{
-                opacity:0,
-                scale:"1.3",
-                duration:0.5,
-                delay:-1,
-            },"var2")
-            .from("#page1 #infotext1 h2,#page1 #infotext1 h3",{
-                opacity:0,
-                scale:"1.3",
-                duration:0.5,
-                delay:-1,
-                stagger:0.2,
-            },"var2")
-            .to("#page1 #infotext1 h2,#page1 #infotext1 h3,#page1 #infotext1 h1",{
-                opacity:0,
-                scale:"1.3",
-                duration:0.5,
-            },"var2")
-            .to(model.position,{
-                x:isMobile ? 0.5 : 1.3,
-                y:0,
-                duration:1.5,
-            },"var3")
-            .to('#page1 #cloudanimate',{
-                bottom : '-50%',
-                left:"0",
-                duration:2,
-                // backgroundColor:'red'
-            },"var3")
-            .to(model.rotation,{
-                x:0.2,
-                y:-2.8,
-                z:-0.8,
-                duration:2,
-            },"var3")
-            .to("#page1 #infotext2 ",{
-                display:"flex",
-                duration:0.3,
-                delay:-1,
-            },"var4")
-            .from("#page1 #infotext2 h1",{
-                opacity:0,
-                scale:"1.3",
-                duration:1,
-                delay:-1,
-            },"var4")
-            .from("#page1 #infotext2 h2,#page1 #infotext2 h3",{
-                opacity:0,
-                scale:"1.3",
-                duration:1,
-                delay:-1,
-                stagger:0.2,
-            },"var4")
-            .to("#page1 #infotext2 h2,#page1 #infotext2 h3,#page1 #infotext2 h1",{
-                opacity:0,
-                scale:"1.3",
-                duration:1,
-            },"var4")
-            .to(model.position,{
-                x:-0,
-                y:isMobile ? -1.4 : -1.2,
-                duration:2,
-            },"var5")
-            .to('#page1 #cloudanimate',{
-                bottom :'0%',
-                left:"0",
-                duration:2,
-            },"var5")
-            .to(model.rotation,{
-                x:0,
-                y:0,
-                z:0,
-                duration:2,
-             },"var5")
-             .to(model.scale,{
-                x:isMobile ? 2.7 :5,
-                y:isMobile ? 2.7 :5,
-                z:isMobile ? 2.7 :5,
-                duration:2,
-             },"var5")
-             .from("#mount3",{
-                y:215,
-                duration:1,
-                delay:1,
-            },"var5")
-            .to("#page1 #infotext3 ",{
-                display:"initial",
-                duration: 0.1,
-            },"var5")
-            .to("#page1 #infotext3 #line #childline ,#page1 #infotext3 #line2 #childline",{
-                clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-                duration: 0.5,
-            },"var6")
-            .to("#page1 #infotext3 #line3 #childline ",{
-                clipPath: "polygon(10% 0, 100% 0%, 100% 100%, 10% 100%)",
-                duration: 0.5,
-            },"var6")
-            .to("#page1 #infotext3 #line h2,#page1 #infotext3 #line2 h3,#page1 #infotext3 #line3 h2",{
-                opacity:1,
-                duration: 0.1,
-            },"var7")
-            .to("#page1 #infotext3 #line #childline ,#page1 #infotext3 #line2 #childline",{
-                opacity:0,
-                duration: 2,
-            },"var8")
-            .to("#page1 #infotext3 #line3 #childline ",{
-                opacity:0,
-                duration: 2,
-            },"var8")
-            .to("#page1 #infotext3 #line h2,#page1 #infotext3 #line2 h3,#page1 #infotext3 #line3 h2",{
-                opacity:0,
-                delay:0.3,
-                duration: 1,
-            },"var8")
-            .to(model.position,{
-                y:-2.3,
-                duration: 1,
-            },"var9")
-            .to(model.rotation,{
-                x:-Math.PI/2,
-                duration: 1,
-            },"var9")
-            
-            
-
-        
-           }
-           shoeanimate()
-        }else{
-            gsap.to('.loader',{
-                display:'initial',
-            })
-            gsap.to('#main',{
-                display:'none',
-            })
-        }
-        
-    },
-    
-)
-
+gltfLoader.load('/models/sneakers/scene.gltf', (gltf) => {
+    model = gltf.scene;
+    if (model) {
+      setupModel(gltf);
+      animateModel();
+      gsap.to('#main', { display: 'block' });
+      gsap.to('nav', { display: 'block' });
+      adjustModelForScreen();
+    } else {
+      gsap.to('.loader', { display: 'initial' });
+      gsap.to('#main', { display: 'none' });
+    }
+  });
+  
+  // Setup GLTF model
+  function setupModel(gltf) {
+    gltf.scene.scale.set(10, 10, 10);
+    gltf.scene.position.set(0, -2.8, 0);
+    gltf.scene.rotation.set(-1.2, 0, 0);
+  
+    model.traverse((child) => {
+      if (child.isMesh && child.material.isMeshStandardMaterial) {
+        child.material.metalness = 0.2;
+        child.material.roughness = 0.8;
+      }
+    });
+  
+    scene.add(gltf.scene);
+  }
+  
+  // Animate model
+  function animateModel() {
+    const isMobile = window.innerWidth <= 768;
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        scroller: "#main",
+        trigger: "#page1",
+        start: "top 0%",
+        end: "bottom -800%",
+        scrub: true,
+        pin: true
+      }
+    });
+  
+    tl2
+      .to(".webgl", { top: 0, left: 0 })
+      .to("#mount1", { x: -440, duration: 1.5 }, "var")
+      .to("#mount2", { x: 440, duration: 1.5 }, "var")
+      .to("#page1 #text .texts", { opacity: "0" }, "var")
+      .to('.cld', { y: -800, duration: 2 }, "var")
+      .to('#page1 #cloudanimate', { bottom: '-100%', duration: 2 }, "var")
+      .to(model.position, { y: 0, delay: -0.1 }, "var")
+      .to(model.rotation, { z: -0.6, x: 0.2, y: -0.5, delay: -1.8 }, "var2")
+      .to(model.scale, { x: isMobile ? 3.5 : 7, y: isMobile ? 3.5 : 7, z: isMobile ? 3.5 : 7, duration: 1.5, delay: -1.8 }, "var2")
+      .to(model.position, { x: isMobile ? -0.5 : -1.2, z: 0, duration: 1.5, delay: -1.8 }, "var2")
+      .to("#page1 #infotext1", { display: 'flex', duration: 0.1, delay: -1 }, "var2")
+      .from("#page1 #infotext1 h1", { opacity: 0, scale: "1.3", duration: 0.5, delay: -1 }, "var2")
+      .from("#page1 #infotext1 h2,#page1 #infotext1 h3", { opacity: 0, scale: "1.3", duration: 0.5, delay: -1, stagger: 0.2 }, "var2")
+      .to("#page1 #infotext1 h2,#page1 #infotext1 h3,#page1 #infotext1 h1", { opacity: 0, scale: "1.3", duration: 0.5 }, "var2")
+      .to(model.position, { x: isMobile ? 0.5 : 1.3, y: 0, duration: 1.5 }, "var3")
+      .to('#page1 #cloudanimate', { bottom: '-50%', left: "0", duration: 2 }, "var3")
+      .to(model.rotation, { x: 0.2, y: -2.8, z: -0.8, duration: 2 }, "var3")
+      .to("#page1 #infotext2", { display: "flex", duration: 0.3, delay: -1 }, "var4")
+      .from("#page1 #infotext2 h1", { opacity: 0, scale: "1.3", duration: 1, delay: -1 }, "var4")
+      .from("#page1 #infotext2 h2,#page1 #infotext2 h3", { opacity: 0, scale: "1.3", duration: 1, delay: -1, stagger: 0.2 }, "var4")
+      .to("#page1 #infotext2 h2,#page1 #infotext2 h3,#page1 #infotext2 h1", { opacity: 0, scale: "1.3", duration: 1 }, "var4")
+      .to(model.position, { x: 0, y: isMobile ? -1.4 : -1.2, duration: 2 }, "var5")
+      .to('#page1 #cloudanimate', { bottom: '0%', left: "0", duration: 2 }, "var5")
+      .to(model.rotation, { x: 0, y: 0, z: 0, duration: 2 }, "var5")
+      .to(model.scale, { x: isMobile ? 2.7 : 5, y: isMobile ? 2.7 : 5, z: isMobile ? 2.7 : 5, duration: 2 }, "var5")
+      .from("#mount3", { y: 215, duration: 1, delay: 1 }, "var5")
+      .to("#page1 #infotext3", { display: "initial", duration: 0.1 }, "var5")
+      .to("#page1 #infotext3 #line #childline ,#page1 #infotext3 #line2 #childline", { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", duration: 0.5 }, "var6")
+      .to("#page1 #infotext3 #line3 #childline", { clipPath: "polygon(10% 0, 100% 0%, 100% 100%, 10% 100%)", duration: 0.5 }, "var6")
+      .to("#page1 #infotext3 #line h2,#page1 #infotext3 #line2 h3,#page1 #infotext3 #line3 h2", { opacity: 1, duration: 0.1 }, "var7")
+      .to("#page1 #infotext3 #line #childline ,#page1 #infotext3 #line2 #childline", { opacity: 0, duration: 2 }, "var8")
+      .to("#page1 #infotext3 #line3 #childline", { opacity: 0, duration: 2 }, "var8")
+      .to("#page1 #infotext3 #line h2,#page1 #infotext3 #line2 h3,#page1 #infotext3 #line3 h2", { opacity: 0, delay: 0.3, duration: 1 }, "var8")
+      .to(model.position, { y: -2.3, duration: 1 }, "var9")
+      .to(model.rotation, { x: -Math.PI / 2, duration: 1 }, "var9");
+  }
+  
 
 /**
  * Base
