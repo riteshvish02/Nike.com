@@ -1,1 +1,1 @@
-{"version":3,"file":"products.css","mappings":"AAAA;IACI,UAAU;IACV,eAAe;AACnB","sources":["webpack:///./src/stylesheets/products.css"],"sourcesContent":["h1{\r\n    color: red;\r\n    font-size: 50px;\r\n}\r\n"],"names":[],"sourceRoot":""}
+{"version":3,"file":"products.css","mappings":"AAAA;IACI,UAAU;IACV,eAAe;AACnB;AACA;IACI,gBAAgB;AACpB,C","sources":["webpack:///./src/stylesheets/products.css"],"sourcesContent":["h1{\r\n    color: red;\r\n    font-size: 50px;\r\n}\r\n#page1{\r\n    background: #000;\r\n}"],"names":[],"sourceRoot":""}

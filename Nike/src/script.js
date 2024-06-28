@@ -3,7 +3,6 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
-const gui = new dat.GUI({width:400,height:1000})
 // var guiDom = gui.domElement;
 // Position the GUI panel
 
@@ -42,6 +41,8 @@ gltfLoader.load(
     '/models/sneakers/scene.gltf',
     (gltf)=>{
         model = gltf.scene
+        if(model){
+            
         gltf.scene.scale.set(10,10,10)
         console.log(gltf);
         gltf.scene.position.set(0,-2.8,0)
@@ -56,7 +57,17 @@ gltfLoader.load(
               }
             }
           });
+        gsap.to('.loader',{
+            display:'none',
+        })
         scene.add(gltf.scene)
+        gsap.to('#main',{
+            display:'block',
+        })
+        gsap.to('nav',{
+            display:'block',
+        })
+        
         adjustModelForScreen()
            
            
@@ -80,7 +91,7 @@ gltfLoader.load(
                 }
             })
             tl2
-         
+           
             .to(".webgl",{
                 top:0,
                 left:0,
@@ -119,9 +130,9 @@ gltfLoader.load(
                 // duration:1.5,
             },"var2")
             .to(model.scale,{
-                x: isMobile ? 4 : 7,
-                y: isMobile ? 4 : 7,
-                z: isMobile ? 4 : 7,
+                x: isMobile ? 3.5 : 7,
+                y: isMobile ? 3.5 : 7,
+                z: isMobile ? 3.5 : 7,
                 duration:1.5,
                 delay:-1.8
             },"var2")
@@ -130,6 +141,11 @@ gltfLoader.load(
                 z:0,
                 duration:1.5,
                 delay:-1.8
+            },"var2")
+            .to("#page1 #infotext1",{
+                display:'flex',
+                duration:0.1,
+                delay:-1,
             },"var2")
             .from("#page1 #infotext1 h1",{
                 opacity:0,
@@ -151,7 +167,7 @@ gltfLoader.load(
             },"var2")
             .to(model.position,{
                 x:isMobile ? 0.5 : 1.3,
-                y:0.19999,
+                y:0,
                 duration:1.5,
             },"var3")
             .to('#page1 #cloudanimate',{
@@ -166,27 +182,32 @@ gltfLoader.load(
                 z:-0.8,
                 duration:2,
             },"var3")
+            .to("#page1 #infotext2 ",{
+                display:"flex",
+                duration:0.3,
+                delay:-1,
+            },"var4")
             .from("#page1 #infotext2 h1",{
                 opacity:0,
                 scale:"1.3",
-                duration:0.5,
+                duration:1,
                 delay:-1,
             },"var4")
             .from("#page1 #infotext2 h2,#page1 #infotext2 h3",{
                 opacity:0,
                 scale:"1.3",
-                duration:0.5,
+                duration:1,
                 delay:-1,
                 stagger:0.2,
             },"var4")
             .to("#page1 #infotext2 h2,#page1 #infotext2 h3,#page1 #infotext2 h1",{
                 opacity:0,
                 scale:"1.3",
-                duration:0.5,
+                duration:1,
             },"var4")
             .to(model.position,{
                 x:-0,
-                y:isMobile ? -1.4 : -1.1,
+                y:isMobile ? -1.4 : -1.2,
                 duration:2,
             },"var5")
             .to('#page1 #cloudanimate',{
@@ -197,19 +218,23 @@ gltfLoader.load(
             .to(model.rotation,{
                 x:0,
                 y:0,
-                z:-0.2,
+                z:0,
                 duration:2,
              },"var5")
              .to(model.scale,{
-                x:isMobile ? 3 :5,
-                y:isMobile ? 3 :5,
-                z:isMobile ? 3 :5,
+                x:isMobile ? 2.7 :5,
+                y:isMobile ? 2.7 :5,
+                z:isMobile ? 2.7 :5,
                 duration:2,
              },"var5")
              .from("#mount3",{
                 y:215,
                 duration:1,
                 delay:1,
+            },"var5")
+            .to("#page1 #infotext3 ",{
+                display:"initial",
+                duration: 0.1,
             },"var5")
             .to("#page1 #infotext3 #line #childline ,#page1 #infotext3 #line2 #childline",{
                 clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
@@ -250,26 +275,14 @@ gltfLoader.load(
         
            }
            shoeanimate()
-           function guicall(){
-            gui.add(gltf.scene.rotation,'x').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationX')
-            gui.add(gltf.scene.rotation,'y').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationY')
-            gui.add(gltf.scene.rotation,'z').min(-Math.PI).max(Math.PI).step(0.2).name('shoeRotationZ')
-            gui.add(gltf.scene.position,'x').min(-8).max(8).step(0.2).name('shoePositionX')
-           gui.add(gltf.scene.position,'y').min(-8).max(8).step(0.2).name('shoePositionY')
-           gui.add(gltf.scene.position,'z').min(-8).max(8).step(0.2).name('shoePositionZ')
-           gui.add(gltf.scene.scale,'x').min(0).max(8).step(0.2).name('shoeScaleX')
-           gui.add(gltf.scene.scale,'y').min(0).max(8).step(0.2).name('shoeScaleY')
-           gui.add(gltf.scene.scale,'z').min(0).max(8).step(0.2).name('shoeScaleZ')
-         
-
-           }
-           guicall()
-          
-       
-       
-          
-            
-       
+        }else{
+            gsap.to('.loader',{
+                display:'initial',
+            })
+            gsap.to('#main',{
+                display:'none',
+            })
+        }
         
     },
     
@@ -455,3 +468,47 @@ const tick = () =>
 
 
 tick()
+
+
+//menubar
+
+document.addEventListener("DOMContentLoaded",function(){
+    const menuImgContainer = document.querySelector('.menu-img')
+    const images = document.querySelectorAll(".menu-img img")
+    let mouse = {x:0,y:0}
+    let cx = window.innerWidth /2 ;
+    let cy = window.innerHeight /2 ;
+
+    const scales = [0.81,0.84,0.87,0.9]
+
+    function update(){
+        let dx = mouse.x - cx
+        let dy = mouse.y - cy
+
+        let tiltx = (dy/cy) * 20
+        let tilty = (dx/cx) * 20
+
+        gsap.to(menuImgContainer,{
+            duration:2,
+            transform:`rotate3d(${tiltx},${tilty},0,15deg)`,
+            ease:"power3.out",
+
+        })
+        images.forEach((img,index)=>{
+            let parallaxX = -(dx * (index+1))/100
+            let parallaxY = -(dy * (index+1))/100
+
+            let transformStyles = `translate(calc(-50% + ${parallaxX}px),calc(-50% + ${parallaxY}px)) scale(${scales[index]})`
+            gsap.to(img ,{
+                duration:2,
+                transform:transformStyles,
+                ease:"power3.out",
+            })
+        })
+    }
+    document.body.addEventListener('mousemove',function(event){
+        mouse.x = event.clientX
+        mouse.y = event.clientY
+        update()
+    })
+ })
