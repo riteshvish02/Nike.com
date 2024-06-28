@@ -1,4 +1,927 @@
-h1{
-    color: red;
-    font-size: 50px;
+@font-face {
+    font-family: nike;
+    src: url(./HelveticaNowTextMedium.ttf);
 }
+@font-face {
+    font-family: font;
+    src: url(./HelveticaNowText.ttf);
+}
+*{
+margin: 0%;
+padding: 0%;
+box-sizing: border-box;
+}
+html,body{
+height: 100%;
+width: 100%;
+}
+.main{
+    width: 100vw;
+    overflow: hidden !important;
+    overflow-x: hidden !important;
+}
+.nav-bar{
+    height: 20vh;
+    width: 100vw;
+    background-color:#F7F7F7;
+}
+.nav-part1{
+    height: 5vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0vw 3vw;
+}
+.icons{
+    display: flex;
+    gap: 1vw;
+    cursor: pointer;
+}
+.navpart1-content{
+    display: flex;
+    gap: 0.7vw;
+    font-family:nike;
+    font-weight: 100;
+    font-size: 0.8vw;
+    align-items: center;
+    cursor: pointer;
+}
+.navpart1-content p:hover{
+    color:#767575;
+}
+.vertical-line{
+    height: 1.7vh;
+    width: 0.01vw;
+    background-color: #000;
+}
+.nav-part2{
+    height: 8vh;
+    width: 100vw;
+    background-color: #fff;
+    padding: 0vw 2.8vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nike-logo img{
+    height: 3.8vw;
+    width: 5vw;
+    cursor: pointer;
+}
+.icon{
+    display: none;
+}
+.navpart2-about{
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    font-family: nike;
+    margin-left: 12vw;
+}
+.navpart2-about h4{
+    font-weight: 100;
+    font-size: 1.1vw;
+    letter-spacing: -0.03vw;
+    cursor: pointer;
+    transition: all ease 1s;
+}
+.navpart2-about h4:hover{
+    text-decoration:underline;
+}
+.navpart2-content{
+    display: flex;
+    align-items: center;
+    gap: 0.7vw;
+}
+.navpart2-content i{
+    font-size: 1.5vw;
+}
+.heart-icon{
+    height: 5vh;
+    width: 2.5vw;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all ease 0.5s;
+}
+.heart-icon:hover{
+    background-color: #d5d3d3;
+}
+.search-box{
+    display: flex;
+    align-items: center;
+    height: 5.2vh;
+    width: 10.5vw;
+    background-color: #F7F7F7;
+    gap: 0.1vw;
+    border-radius: 50px;
+    padding: 0vw 0.7vw;
+    transition: all ease 0.5s;
+}
+.search-box i{
+    font-size:1.3vw ;
+}
+.search-icon{
+    height: 5vh;
+    width: 2.5vw;
+    border-radius: 50%;
+    margin-left: -0.6vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all ease 0.5s;
+}
+.search-icon:hover{
+    background-color: #d3d2d2;
+}
+.search-box:hover{
+    background-color: #e4e2e2;
+}
+.search-box h6{
+    font-family: font;
+    font-weight: 100;
+    font-size: 1.05vw;
+    color: #767575;
+}
+.nav-part3{
+    height: 9vh;
+    width: 100vw;
+    background-color: #F7F7F7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10vw;
+}
+.nav-part3 i{
+    font-size: 1.7vw;
+    color: #aaa9a9;
+    cursor: pointer;
+    transition: all ease 0.5s;
+}
+.nav-part3 i:hover{
+    color: #000;
+}
+.nav-part3 p{
+    font-family: nike;
+}
+.nav-part3 p span{
+    font-size: 0.8vw;
+    letter-spacing: -0.1vh;
+    margin-left: 0.5vw;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.nav-part4{
+    display: none;
+}
+.filter-option{
+    display: none;
+}
+.home{
+    display: flex;
+    margin-top: 1vw;
+}
+.home-left{
+    display: initial;
+    padding: 1vw 3vw;
+    overflow: hidden;
+}
+.parts{
+    display: flex;
+    justify-content: space-between;
+    transition: all ease 0.5s;
+    overflow-y: auto;
+} 
+.parts::-webkit-scrollbar-track {
+    background: #adadad;
+    border-radius: 5px;
+}
+
+.parts::-webkit-scrollbar-thumb {
+    background-color: #007bff;
+    border-radius: 5px;
+}
+.new-head h4{
+    font-family: nike;
+    font-weight: 100;
+    font-size: 1.5vw;
+}
+.categories{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8vw;
+    padding: 1.7vw 0vw;
+    cursor: pointer;
+}
+.categories h6{
+    font-family:nike;
+    font-size: 1.1vw;
+    font-weight: 100;
+    width: 12vw;
+    line-height: 1.5vw;
+}
+.filters{
+    width: 13vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.filter{
+    width: 13vw;
+    border-top: 0.1vw solid #e4e2e2;
+}
+summary{
+    height: 8vh;
+    width: 13vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-family: nike;
+    font-weight: 100;
+    font-size: 1.1vw;
+}
+summary i{
+    font-size: 1.5vw;
+    color: #000;
+    font-weight: 900;
+    margin-left: 10vw;
+    position: absolute;
+}
+ .filter-parts{
+    display: none;
+ }
+.options{
+    padding-bottom: 1.5vh;
+    transition: all ease 0.5s;
+}
+.category{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5vw;
+    gap: 0.5vw;
+    cursor: pointer;
+    transition: all ease 0.5s;
+}
+.category h6{
+    font-size: 1vw;
+    font-weight: 100;
+    font-family: font;
+    transition: all ease 0.5s;
+}
+.category h6:hover{
+    color: #737272;
+}
+.box{
+    height: 2.7vh;
+    width: 1.4vw;
+    border: 0.01vw solid rgb(137, 136, 136);
+    border-radius: 0.3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all ease 0.5s;
+}
+.box i{
+    font-size: 1.2vw;
+    font-weight: 900;
+    color: #fff;
+}
+.active{
+    background-color: #000;
+}
+.colors{
+    display: flex;
+    justify-content:space-evenly;
+    margin-bottom: 1.3vw;
+    cursor: pointer;
+    margin-left: -2vw;
+}
+.color-name{
+    height: 4.2vh;
+    width: 2vw;
+    border-radius: 50%;
+    background-color: #000000;
+}
+.color:nth-child(2) .color-name{
+    background-color:white ;
+    border: 0.1vw solid #d5d3d3;
+}
+.color:nth-child(3) .color-name{
+    background-color:rgb(0, 174, 255) ;
+}
+.colors:nth-child(3) .color:nth-child(1) .color-name{
+    background-color:brown ;
+}
+.colors:nth-child(3) .color:nth-child(2) .color-name{
+    background-color:green ;
+}
+.colors:nth-child(3) .color:nth-child(3) .color-name{
+    background-color:grey ;
+}
+.colors:nth-child(4) .color:nth-child(1) .color-name{
+    background-color:goldenrod ;
+}
+.colors:nth-child(4) .color:nth-child(2) .color-name{
+    background-color:orangered ;
+}
+.colors:nth-child(4) .color:nth-child(3) .color-name{
+    background-color:pink ;
+}
+.colors:nth-child(5) .color:nth-child(1) .color-name{
+    background-color:purple ;
+}
+.colors:nth-child(5) .color:nth-child(2) .color-name{
+    background-color:red ;
+}
+.colors:nth-child(5) .color:nth-child(3) .color-name{
+    background-color:yellow ;
+}
+
+.color{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.color h6{
+    font-size: 0.8vw;
+    font-family: nike;
+    font-weight: 100;
+    color: #666565;
+}
+.right-part{
+    width: 0.5vw;
+    position: relative;
+}
+.slider{
+    height: 20vh;
+    width: 0.5vw;
+    background-color: #848484;
+    border-radius: 0.5vw;
+    position: absolute;
+}
+.home-right{
+    height: 100vh;
+    width: 80vw;
+    position: absolute;
+    left: 20vw;
+}
+.sorting{
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 2.5vw;
+    margin-right: -3.5vw;
+}
+.sorting h6{
+    font-family: font;
+    font-weight: 100;
+    font-size: 1.1vw;
+    cursor: pointer;
+}
+.sorting h6 i{
+    font-weight: 900;
+}
+#arrow{
+    font-family: font;
+    font-weight: 100;
+    font-size: 1.1vw;
+}
+#arrow i{
+    margin-left: 4.2vw;
+}
+#show{
+    display: none;
+}
+.sort-options{
+    position: absolute;
+    background-color: #fff;
+    padding: 2vw;
+    border-radius: 1.5vw;
+    padding-top: 0;
+    left: 83vw;
+}
+.sort-options h6{
+    font-size: 1vw;
+    font-family: font;
+    font-weight: 100;
+    text-align: end;
+}
+.new-shoes{
+    scale: 0;
+}
+.shoes-boxes{
+    height: 80vh;
+    display: flex;
+    gap: 1vw;
+    padding-right: 4vw;
+    padding-bottom: 4vw;
+}
+.shoes-boxes:nth-child(2){
+    padding-bottom: 2vw;
+}
+.shoe-box{
+    height: 100%;
+    width:33vw;
+    cursor: pointer;
+}
+.shoe-box img{
+    height: 75%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.shoe-description h4{
+    font-size: 1.1vw;
+    font-family: font;
+    font-weight: 100;
+    width: 16vw;
+}
+.shoe-description h4 span{
+    font-size: 0.8vw;
+}
+.shoe-price{
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+.shoe-price h5{
+    font-size: 1vw;
+    font-family: font;
+    font-weight: 900;
+}
+.shoe-price h5 span{
+    color: #aaa9a9;
+    text-decoration: line-through;
+}
+.shoe-price h4{
+    font-size: 0.8vw;
+    font-weight: 900;
+    color: rgb(201, 3, 3);
+}
+.shoe-color{
+    padding-top: 1.2vw;
+    display: flex;
+    gap: 0.8vw;
+    align-items: center;
+}
+.shoe-color img{
+    height: 5vh;
+    width: 2.5vw;
+}
+.shoe-color img:hover{
+    border: 0.1vw solid rgb(203, 202, 202);
+}
+ .footer{
+    height: 70vh;
+    width: 100vw;
+    background-color:#F7F7F7;
+    position: absolute;
+    top: 360vh;
+    z-index: 999999;
+ }
+ .footer-1{
+    height: 22%;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #dfdede;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+ }
+ .footer-part{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+ }
+ .footer-part img{
+    height: 5vw;
+ }
+ .footer-part h4{
+    font-size: 0.8vw;
+    font-weight: 100;
+    font-family: font;
+    margin-top: -1vw;
+ }
+ .footer-2{
+    height: 62%;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content:center;
+    gap: 7vw;
+ }
+ .footer-content{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3vw;
+ }
+ .footer-2 h4{
+    font-size: 1.1vw;
+    font-weight: 100;
+    font-family: nike;
+    text-transform: capitalize;
+    cursor: pointer;
+ }
+ .content{
+    margin-top: 1.5vw;
+ }
+ .content h4{
+    font-size: 0.9vw;
+    font-weight: 100;
+    font-family: font;
+    margin-bottom: 0.7vw;
+ }
+ .footer-3{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30vw;
+    border-top: 0.1px solid #e4e2e2;
+ }
+ .footer-3 h4{
+    font-size: 1vw;
+    font-family: nike;
+    font-weight: 100;
+    cursor: pointer;
+    transition: all ease 0.5s;
+ }
+ .footer-3 h4:hover{
+    text-decoration: underline;
+ }
+ .footer-3 p{
+    font-size: 0.85vw;
+    font-family: font;
+    font-weight: 100;
+    cursor: pointer;
+ }
+ .footer-4{
+    display: none;
+ }
+
+ /* RESPONSIVE */
+
+ @media (max-width:600px) {
+    .nav-bar{
+        height: 15vh;
+        width: 100vw;
+        background-color:#F7F7F7;
+    }
+    .nav-part1{
+        display: none;
+    }
+    .nike-logo img{
+        height: 8vh;
+        width: 16vw;
+        cursor: pointer;
+    }
+    .navpart2-about{
+        display: none;
+    }
+    .heart-icon{
+        display: none;
+    }
+    .search-box{
+        display: none;
+    }
+    .search-box i{
+        font-size:1.3vw ;
+    }
+    .logo{
+        padding: 0 2vw;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .icon{
+        display: initial;
+    }
+    .icon i{
+        margin-right: 3vw;
+        font-size: 6vw;
+        color: #757474;
+    }
+    .nav-part3 i{
+        display: none;
+    }
+    .nav-part3 p span{
+        font-size: 3.5vw;
+        cursor: pointer;
+    }
+    .nav-part4{
+        scale: 0;
+        position: absolute;
+        top: 0;
+        height: 100vh;
+        width: 80vw;
+        background-color: #f7f7f7;
+        right: 0;
+        z-index: 999999;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding: 7vw;
+        gap: 15vw;
+    }
+    .close-icon i{
+        font-size: 7.5vw;
+        margin-left: 57vw;
+    }
+    .new-things{
+        display: flex;
+        justify-content: space-between;
+        gap: 12vw;
+        margin-bottom: 4vw;
+    }
+    .navpart4-content h4{
+        font-weight: 100;
+        font-family: font;
+        text-transform:uppercase;
+        font-size: 5.8vw;
+    }
+    .new-things i{
+        font-size: 7vw;
+    }
+    .para p{
+        font-size: 5vw;
+        font-family: font;
+        font-weight: 100;
+        line-height: 6.5vw;
+    }
+    .para button{
+        padding: 1.2vw 3vw;
+        border-radius: 10vw;
+        font-size: 4vw;
+        font-family: nike;
+        border: none;
+        margin-top: 8vw;
+    }
+    .btn-1{
+        background-color: #000;
+        color: #fff;
+    }
+    .btn-2{
+        background-color: #fff;
+        margin-left: 5vw;
+    }
+    .block{
+        font-family: font;
+        font-size: 4vw;
+        text-transform: capitalize;
+        display: flex;
+        flex-direction: column;
+        gap: 5vw;
+    }
+    .block h4 i{
+        font-size: 6vw;
+        margin-right: 5vw;
+    }
+    .filter-option{
+        display: initial;
+    }
+    .filter-option button{
+        padding: 1.5vw 5vw;
+        font-size: 4vw;
+        font-weight: 100;
+        font-family: nike;
+        border-radius: 50px;
+        background-color: #fff;
+        border: 1px solid #cbcbcb;
+        margin-left: 20vw;
+        margin-top: 4vw;
+    }
+    .filter-option button i{
+        margin-left: 2vw;
+    }
+    .home-left{
+        scale: 0;
+    }
+    .home-right{
+        position: relative;
+    }
+    .close{
+        height: 4vh;
+        width: 8vw;
+        border-radius: 50%;
+        background-color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 75vw;
+        margin-bottom: 3vw;
+    }
+    .close i{
+        color: #fff;
+        font-size: 5.5vw;
+    }
+    .filter-parts{
+        position: absolute;
+        top: -30vw;
+        left: -39vw;
+        height: 100vh;
+        width: 100vw;
+        z-index: 99999;
+        background-color: #fff;
+        padding: 6vw;
+    }
+    .filter-parts .categories{
+        display: none;
+    }
+    .filter-parts .filters{
+        display: flex;
+        flex-direction: column;
+        gap: 4vw;
+    }
+    .filter-parts .filter{
+        border-bottom: 1px solid #f7f7f7;
+        width: 90vw;
+    }
+    .filter-parts .filter summary{
+        margin-top: 2vw;
+    }
+    .filter-parts .filter:nth-child(1){
+        border-top: none;
+    }
+    .filter-parts .category .box{
+        height: 2.5vh;
+        width: 4.7vw;
+        border-radius: 2px;
+    } 
+    .filter-parts .category .box i{
+        font-size: 5vw;
+    }
+    .filter-parts .category h6{
+        font-size: 4.3vw;
+        margin-left: 2vw;
+    }
+    .filter-parts .category{
+        margin-top: 1vw;
+    }
+    .filter-parts .colors{
+        margin-bottom: 3vh;
+    }
+    .filter-parts .color-name{
+        height: 4vh;
+        width: 8.3vw;
+    }
+    .filter-parts .color{
+        margin-top: 1.5vw;
+        margin-left: -4vw;
+    }
+    .filter-parts .color h6{
+        font-size: 3.5vw;
+        margin-top: 0.5vh;
+    }
+    .new-shoes{
+        height: 6vh;
+        width: 100vw;
+        scale: 1;
+        position: absolute;
+        top:5vh;
+        left: -39vw;
+        font-size: 5vw;
+        font-family: font;  
+        border-bottom: 1px solid #e4e2e2;
+    }
+    .new-shoes h4{
+        font-weight: 100;
+        margin-left: 6vw;
+    }
+    .sorting{
+        height: 12vh;
+    }
+    .shoes-container{
+        position: absolute;
+        left: -40vw;
+    }
+    .shoes-boxes{
+        height: 35vh;
+        display: flex;
+        gap: 2vw;
+        margin-bottom: 15vw;
+        padding-top: 3vh;
+    }
+    .shoe-box{
+        width: 50vw;
+    }
+    .shoes-boxes .shoe-box:nth-child(3){
+        scale: 0;
+    }
+    .shoe-description{
+        padding-left: 2vw;
+    }
+    .shoe-description h4{
+        font-size: 3vw;
+        font-family: nike;
+        width: 50vw;
+        line-height: 3vw;
+        margin-top: 2vw;
+    }
+    .shoe-description h4 span{
+        font-size: 2.7vw;
+    }
+    .shoe-price{
+        display: flex;
+        align-items: center;
+        gap: 3vw;
+        margin-top: 2vw;
+    }
+    .shoe-price h5{
+        font-size: 3.5vw;
+        font-family: font;
+        font-weight: 900;
+    }
+    .shoe-price h4{
+        font-size: 2.5vw;
+        font-weight: 900;
+        color: rgb(201, 3, 3);
+        margin-top: 0;
+    }
+    .shoe-color{
+        padding-top: 1.2vw;
+        display: flex;
+        gap: 1vw;
+        align-items: center;
+        margin-top: 3vw;
+    }
+    .shoe-color img{
+        height: 4vh;
+        width: 8vw;
+    }
+    .footer{
+        height: 150vh;
+    }
+    .footer-1{
+        height: 10%;
+        justify-content:space-evenly;
+        align-items: center;
+    }
+    .footer-part{
+        margin-top: -10vw;
+    }
+    .footer-part img{
+        height: 25vw;
+    }
+    .footer-part:nth-child(2) img{
+        margin-left: -5vw;
+    }
+    .footer-part:nth-child(3) img{
+        margin-left: -7vw;
+    }
+    .footer-part h4{
+        font-size: 2.5vw;
+        font-weight: 100;
+        font-family: font;
+        margin-top: -7vw;
+        width: 20vw;
+    }
+    .footer-2{
+        height: 80%;
+        display: none;
+    }
+    .footer-3{
+        display: none;
+    }
+    .footer-4{
+        display: initial;
+    }
+    .part1{
+        margin-left: 10vw;
+        margin-right: 10vw;
+        border-bottom: 1px solid #dedddd;
+        height: 10vh;
+    }
+    .part1:nth-child(1){
+        margin-top: 8vh;
+    }
+    .sorting h6{
+        color: #fff;
+    }
+    #show{
+        color: #fff;
+    }
+    summary{
+        font-size: 5vw;
+        width: 70vw;
+    }
+    summary i{
+        position: absolute;
+    }
+    .part1 h6{
+        font-size: 4vw;
+        font-family: font;
+        font-weight: 100;
+    }
+    .offers{
+        padding: 2vw;
+    }
+ }
