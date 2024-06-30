@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     menuClose.addEventListener('click', function () {
+        console.log("callleddd");
         if (!isOpen) return;
         closeMenu();
     });
@@ -31,12 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
             duration: 1.25,
             ease: defaultEase
         });
-        gsap.to("#main", {
-            top: "50%",
-            opacity: 0,
-            duration: 0.25,
-            ease: defaultEase,
-        });
+       
      
         gsap.to(".menu-link p", {
             y: 0,

@@ -6,7 +6,10 @@ const path = require('path');
 module.exports = {
     entry: {
         main: path.resolve(__dirname, '../src/script.js'),
-        products: path.resolve(__dirname, '../src/javascripts/products.js')
+        products: path.resolve(__dirname, '../src/javascripts/products.js'),
+        about: path.resolve(__dirname, '../src/javascripts/about.js'),
+        team: path.resolve(__dirname, '../src/javascripts/team.js'),
+        career: path.resolve(__dirname, '../src/javascripts/career.js')
     },
     output: {
         hashFunction: 'xxhash64',
@@ -30,6 +33,24 @@ module.exports = {
             template: path.resolve(__dirname, '../src/products.html'),
             filename: 'products.html',
             chunks: ['products'],
+            minify: true
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, '../src/about.html'),
+            filename: 'about.html',
+            chunks: ['about'],
+            minify: true
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, '../src/team.html'),
+            filename: 'team.html',
+            chunks: ['team'],
+            minify: true
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, '../src/career.html'),
+            filename: 'career.html',
+            chunks: ['career'],
             minify: true
         }),
         new MiniCSSExtractPlugin()
@@ -78,7 +99,7 @@ module.exports = {
                 test: /\.(glsl|vs|fs|vert|frag)$/,
                 type: 'asset/source',
                 generator: {
-                    filename: 'assets/images/[hash][ext]'
+                    filename: 'assets/shaders/[hash][ext]'
                 }
             }
         ]
