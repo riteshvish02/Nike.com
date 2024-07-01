@@ -1,6 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const menuOpen = document.querySelector(".menu-open");
-    const menuClose = document.querySelector(".menu-close");
+    const menuOpen = document.querySelectorAll(".menu-open");
+    const menuClose = document.querySelectorAll(".menu-close");
+    menuOpen.forEach((item)=>{
+        item.addEventListener('click', function () {
+            if (isOpen) return;
+            openMenu();
+        });
+    })
 
     if (!menuOpen || !menuClose) {
         console.error("menuOpen or menuClose elements not found.");
@@ -14,16 +20,15 @@ document.addEventListener("DOMContentLoaded", function () {
     gsap.set('.menu-sub-item p', { y: 12 });
     gsap.set(['#img-2', '#img-3', '#img-4'], { top: '150%' });
 
-    menuOpen.addEventListener('click', function () {
-        if (isOpen) return;
-        openMenu();
-    });
-
-    menuClose.addEventListener('click', function () {
-        console.log("callleddd");
+    menuClose.forEach((item)=>{
+        item.addEventListener('click', function () {
+            console.log("callleddd");
         if (!isOpen) return;
         closeMenu();
-    });
+        });
+    })
+
+   
 
     const openMenu = () => {
         gsap.to('.menu', {

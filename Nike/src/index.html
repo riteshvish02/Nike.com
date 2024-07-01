@@ -15,21 +15,45 @@
 </head>
 <body>
   <div class="loader">
-    <div class="loadingbar"></div>
+    <div id="shimmerWave">Experience is loading...</div>
+    <div class="header">
+      <svg xmlns="http://www.w3.org/2000/svg">
+
+        <!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
+        
+          <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+            
+            <!-- We only want horizontal blurring. x: 100, y: 0 -->
+            
+              <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+          </filter>
+      </svg>
+      
+      <!-- We use a custom attribute to set the text that the pseudo element should display and blur. In this case, we use the first character of the word. -->
+      
+      <span filter-content="S">REEBOK</span>
+        
+    </div>
+    <div class="loadingbar">
+      <h2></h2>
+    </div>
+
   </div>
   <canvas class="webgl"></canvas>
   <nav>
-    <div class="menu-open" id="menu">
+    <div class="menu-open screen" id="menu">
       <div id="black">
       </div>
       <div class="line" id="l1"></div>
       <div class="line" id="l2"></div>
       <div class="line" id="l3"></div>
     </div>
+    <h3 class="menu-open response res1">Menu</h3>
   </nav>
   <div class="menu">
     <div class="menu-nav">
-      <div class="menu-close" id="menu">
+      <h3 class="menu-close response ">close</h3>
+      <div class="menu-close screen" id="menu">
         <div id="black">
         </div>
         <div class="line" id="l1"></div>
@@ -224,8 +248,155 @@
 
         </div>
         <div class="page" id="page4">
-
+          
+          <div class="items-container"></div>
+          <div class="cursor">
+              <!-- <img src="./star-white.93262632.svg" alt=""> -->
+              <h2>click</h2>
+          </div>
+          <div class="wrapper">
+              <div class="header">
+                <svg xmlns="http://www.w3.org/2000/svg">
+  
+                  <!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
+                  
+                    <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+                      
+                      <!-- We only want horizontal blurring. x: 100, y: 0 -->
+                      
+                        <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+                    </filter>
+                </svg>
+                
+                <!-- We use a custom attribute to set the text that the pseudo element should display and blur. In this case, we use the first character of the word. -->
+                
+                <span filter-content="S">REEBOK</span>
+                  
+              </div>
+          </div>
         </div>
+        <div class="footer">
+          <div class="footer-1">
+              <div class="footer-part">
+                  <img src="/static/assets/freeshipping-icon.png" alt="">
+                  <h4>FREE SHIPPING</h4>
+              </div>
+              <div class="footer-part">
+                  <img src="/static/assets/return-icon.png" alt="">
+                  <h4>RETURN WITHIN 15 DAYS</h4>
+              </div>
+              <div class="footer-part">
+                  <img src="/static/assets/delivery-icon.png" alt="">
+                  <h4>EXPRESS DELIVERY IN STORE MODE</h4>
+              </div>
+          </div>
+          <div class="footer-2">
+              <div class="footer-content">
+                  <h4>Resources</h4>
+                  <div class="content">
+                      <h4>Membership</h4>
+                      <h4>store locator</h4>
+                      <h4>order status</h4>
+                      <h4>gift cards</h4>
+                  </div>
+              </div>
+              <div class="footer-content">
+                  <h4>discounts</h4>
+                  <div class="content">
+                      <h4>birthday discount</h4>
+                      <h4>student/teacher discount</h4>
+                      <h4>disability discount</h4>
+                  </div>
+              </div>
+              <div class="footer-content">
+                  <h4>help</h4>
+                  <div class="content">
+                      <h4>help</h4>
+                      <h4>shipping</h4>
+                      <h4>returns</h4>
+                      <h4>payment options</h4>
+                      <h4>convenience store pickup</h4>
+                      <h4>contact</h4>
+                  </div>
+              </div>
+              <div class="footer-content">
+                  <h4>about us</h4>
+                  <div class="content">
+                      <h4>Aditya Birla Fashion & Retail Ltd</h4>
+                      <h4>find a store</h4>
+                  </div>
+              </div>
+              <div class="footer-content">
+                  <h4>find us on</h4>
+                  <div class="content">
+                      <h4>facebook </h4>
+                      <h4>instagram </i></h4>
+                      <h4>youtube </h4>
+                      <h4>linked in </h4>
+                  </div>
+              </div>
+          </div>
+          <div class="footer-3">
+              <h4>Privacy Policy | Cookie Policy</h4>
+              <p>© 2023 Madura Fashion & Lifestyle, A Division of Aditya Birla Fashion & Retail Limited. All Rights Reserved.</p>
+          </div>
+          <div class="footer-4">
+              <div class="part1">
+                  <details>
+                      <summary>Resources <i class="ri-arrow-down-s-line"></i> </summary>
+                      <div class="offers">
+                          <h6>membership</h6>
+                          <h6>store locator</h6>
+                          <h6>order status</h6>
+                          <h6>gift cards</h6>
+                      </div>
+                  </details>
+              </div>
+              <div class="part1">
+                  <details>
+                      <summary>Discounts <i class="ri-arrow-down-s-line"></i></summary>
+                      <div class="offers">
+                          <h6>birthday discount</h6>
+                          <h6>student/teacher discount</h6>
+                          <h6>disability discount</h6>
+                      </div>
+                  </details>
+              </div>
+              <div class="part1">
+                  <details>
+                      <summary>Help <i class="ri-arrow-down-s-line"></i></summary>
+                      <div class="offers">
+                          <h6>help</h6>
+                          <h6>shipping</h6>
+                          <h6>returns</h6>
+                          <h6>payment options</h6>
+                          <h6>convenience store pickup</h6>
+                          <h6>contact</h6>
+                      </div>
+                  </details>
+              </div>
+              <div class="part1">
+                  <details>
+                      <summary>About Us <i class="ri-arrow-down-s-line"></i></summary>
+                      <div class="offers">
+                          <h6>Aditya Birla Fashion & Retail Ltd</h6>
+                          <h6>Find A Store</h6>
+                      </div>
+                  </details>
+              </div>
+              <div class="part1">
+                  <details>
+                      <summary>Find Us On <i class="ri-arrow-down-s-line"></i></summary>
+                      <div class="offers">
+                          <h6>facebook</h6>
+                          <h6>instagram</h6>
+                          <h6>youtube</h6>
+                          <h6>linked in</h6>
+                      </div>
+                  </details>
+              </div>
+          </div>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>

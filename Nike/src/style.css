@@ -23,8 +23,47 @@ body
     align-items: center;
     justify-content: center;
     color: white;  
+    flex-direction: column;
     top: 0;
 }
+.loader .header{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    bottom: 3%;
+}
+.loader .header span {
+    position: relative;
+    font-family: "Avenir Next", sans-serif;
+    font-weight: 900!important;
+    font-size: 100px;
+    z-index: 99999999999999999999999;
+    text-transform: uppercase;
+    font-style: italic;
+    color: White;
+    letter-spacing: 0.05em;
+    display: inline-block;
+  }
+  
+  /* We create a pseudo element and blur it using the SVG filter. We’ll grab the content from the custom HTML attribute. */
+  
+.loader  span:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99999999999999999999999999999999;
+    content: attr(filter-content);
+  
+    filter: url(#motion-blur-filter);
+  }
+  
+  /* We hide the SVG filter element from the DOM as it would take up some space */
+  
+.loader svg {
+    display: none;
+  }
+
 .loader .loadingbar{
     width: 100%;
     height: 1.3px;
@@ -33,6 +72,150 @@ body
     transform-origin: top left;
     transition: transform 0.5s;
 }
+
+.loader .loadingbar h2{
+    font-family: nike;
+    float: right;
+    font-size: 15vh;
+    margin: 8px;
+    flex-shrink: 1!important;
+}
+
+
+ 
+#shimmerWave {
+    color: white;
+    font-size: 20px;
+    font-family: 'Open-Sans', sans-serif;
+    font-weight: 600;
+    perspective: 80px;
+    transform-style: preserve-3d;
+    margin-bottom: 5px;
+  }
+  
+  #shimmerWave span {
+    position: relative;
+    transition: all .3s ease;
+    display: inline-block;
+    animation: wave 2.4s ease infinite;
+    letter-spacing: 0.01em;
+    transform-origin: 100% 50%;
+    transform-style: preserve-3d;
+    /* border: 1px solid red; */
+  }
+  
+  #shimmerWave span:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  #shimmerWave span:nth-child(2) {
+    animation-delay: 0.05s;
+  }
+  
+  /* Repeat the above nth-child selectors up to 21 */
+  
+  #shimmerWave span:nth-child(3) {
+    animation-delay: 0.10s;
+  }
+  
+  #shimmerWave span:nth-child(4) {
+    animation-delay: 0.15s;
+  }
+  
+  #shimmerWave span:nth-child(5) {
+    animation-delay: 0.20s;
+  }
+  
+  #shimmerWave span:nth-child(6) {
+    animation-delay: 0.25s;
+  }
+  
+  #shimmerWave span:nth-child(7) {
+    animation-delay: 0.30s;
+  }
+  
+  #shimmerWave span:nth-child(8) {
+    animation-delay: 0.35s;
+  }
+  
+  #shimmerWave span:nth-child(9) {
+    animation-delay: 0.40s;
+  }
+  
+  #shimmerWave span:nth-child(10) {
+    animation-delay: 0.45s;
+  }
+  
+  #shimmerWave span:nth-child(11) {
+    animation-delay: 0.50s;
+  }
+  
+  #shimmerWave span:nth-child(12) {
+    animation-delay: 0.55s;
+  }
+  
+  #shimmerWave span:nth-child(13) {
+    animation-delay: 0.60s;
+  }
+  
+  #shimmerWave span:nth-child(14) {
+    animation-delay: 0.65s;
+  }
+  
+  #shimmerWave span:nth-child(15) {
+    animation-delay: 0.70s;
+  }
+  
+  #shimmerWave span:nth-child(16) {
+    animation-delay: 0.75s;
+  }
+  
+  #shimmerWave span:nth-child(17) {
+    animation-delay: 0.80s;
+  }
+  
+  #shimmerWave span:nth-child(18) {
+    animation-delay: 0.85s;
+  }
+  
+  #shimmerWave span:nth-child(19) {
+    animation-delay: 0.90s;
+  }
+  
+  #shimmerWave span:nth-child(20) {
+    animation-delay: 0.95s;
+  }
+  
+  #shimmerWave span:nth-child(21) {
+    animation-delay: 1s;
+  }
+  
+  @keyframes wave {
+    0% {
+      transform: translate3D(0, 0, 0) scale(1) rotateY(0);
+      color: white;
+      text-shadow: 0 0 0 rgba(70, 175, 200, 0);
+    }
+    12% {
+      transform: translate3D(2px, -2px, 2px) scale(1.16) rotateY(6deg);
+      color: white;
+    }
+    15% {
+      text-shadow: 0 0 2px #9cdefa;
+    }
+    24% {
+      transform: translate3D(0, 0, 0) scale(1) rotateY(0);
+      color: white;
+      opacity: 1;
+    }
+    36% {
+      transform: translate3D(0, 0, 0) scale(1);
+    }
+    100% {
+      transform: scale(1);
+      opacity: .8;
+    }
+  }
 #main{
     position: relative;
     overflow-x: hidden;
@@ -62,20 +245,13 @@ img{
     overflow-x: hidden;
 }
 
-/* .loader{
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999!important;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;  
-    top: 0!important;
-    left: 0!important;
-} */
- 
+
+.loader .header span{
+    font-size: 8vh;
+}
+.loader .loadingbar h2{
+    font-size: 5vh;
+}
  #infotext3{
     height: 35%!important;
     /* background: red; */
@@ -161,10 +337,13 @@ img{
 
 
 #page1 .texts{
-   font-size: 5vh;
+   font-size: 4.5vh;
    line-height: 50px;
    white-space: nowrap;
-   margin-left: 5%;
+   margin-left: 8%!important;
+}
+#page1 #text1 h4{
+    -webkit-text-stroke: 2px white!important;
 }
 
 
@@ -230,7 +409,7 @@ img{
 
 #page1 #infotext2 h3{
     font-size: 1.4vh!important;
-    margin-top: 3vh!important;
+    margin-top: 2vh!important;
     width: 80%;
     font-weight: 550;
     font-family: nike2;
@@ -274,12 +453,12 @@ img{
     font-family: nike2;
     color:black;
     white-space: nowrap;
+    -webkit-text-stroke: 1px;
     /* background: #000; */
     display: inline-block;
     text-transform: uppercase;
     margin: 3px;
 }
-
 
 #page1 #infotext1 h3{
     font-size: 1.4vh!important;
@@ -294,12 +473,73 @@ img{
     margin: 3px;
 }
 
+#page1 #text1{
+   
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 80%);
+    display: inline-block;
+    transform: scaleY(1.1);
+   height: fit-content;
+   width: fit-content;
+   font-size: 1.5vh;
+   /* background: red;   */
+   padding-right: 3%;
+}
+
+
+.screen{
+    display: none!important;
+}
+.response{
+    font-family: nike;
+    color: White;
+    font-size: 1.7vh;
+    mix-blend-mode:color-burn;
+    display: initial!important;
+    font-weight: 600;
+}
+.res1{
+    color: #000;
+}
+
+#page4 .wrapper .header span {
+    position: relative;
+    font-family: "Avenir Next", sans-serif;
+    font-weight: 900;
+    font-size: 75px!important;
+    z-index: 999999999999999999999999999999999999999999999!important;
+    text-transform: uppercase;
+    font-style: italic;
+    color: White;
+    letter-spacing: 0.05em;
+    display: inline-block;
+  }
+#page4 .cursor{
+    display: none!important;
+}
+
+#page4 .video-container,.img-container{
+    position: absolute;
+    width: 300px!important;
+    height: 300px!important;
+    transform: translateY(-50%);
+    z-index: 9999999;
+    pointer-events: none;
+}
+/* #main{
+    display: inline-block;
+}
+.loader{
+    display: none;
+} */
+
 /* #mountcover {
     display: none;
 } */
 }
 
-
+.response{
+    display: none;
+}
 
 .webgl
 {
@@ -480,6 +720,7 @@ img{
     transform: scaleY(1.2);
    height: fit-content;
    width: fit-content;
+   font-size: 1.5vh;
 
 }
 #page1 h2{
@@ -736,7 +977,8 @@ img{
     height: 100vh;
     background-color:#0C0B0A;   
     background-size: cover;
-   
+   position: relative;
+   z-index: 99999999999999999999999999999999999999999999999999999999999999999!important;
     /* overflow: hidden; */
     background-color: red;
    
@@ -944,7 +1186,8 @@ a {
 
 .menu-link p{
     position: relative;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    font-family: nike;
     font-size: 50px;
     font-weight: 700;
 }
@@ -979,3 +1222,216 @@ a {
         display: none;
     }
 }
+
+#main{
+    display: inline-block;
+}
+/* .loader{
+    display: none;
+} */
+/* #cloudanimate{
+    display: none;
+}
+#page1{
+    opacity: 0;
+} */
+#page3{
+    background: #000;
+}
+#page4{
+height: 100vh;
+width: 100vw;
+overflow-x: hidden;
+overflow: hidden;
+background-color:black;
+font-family: nike;
+position: relative!important;
+}
+#page4 .cursor{
+    position: absolute;
+    width: 5vw;
+    height: 10vh;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    z-index: 66666;
+}
+#page4 .cursor img{
+    height: 8vh;
+}
+#page4 .wrapper{
+    position: relative;
+    width: 100vw;
+    height: 100vw;
+    z-index: 9999;
+}
+#page4 .wrapper nav{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    display: flex;
+    padding: 2em;
+}
+
+
+#page4 .header{
+    position: absolute;
+    top: 60vh;
+    width: 100vw;
+}
+#page4 .header h1{
+    text-transform: uppercase;
+    /* font-family: velvetica; */
+    font-size: 22vw;
+    font-weight: 100;
+    color: #fff;
+    text-align: center;
+    line-height: 100%;
+}
+#page4 video,
+#page4 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+#page4 .video-container,.img-container{
+    position: absolute;
+    width: 700px;
+    height: 500px;
+    transform: translateY(-50%);
+    z-index: 9999999;
+    pointer-events: none;
+}
+
+.wrapper .header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+#page4 .wrapper .header span {
+    position: relative;
+    font-family: "Avenir Next", sans-serif;
+    font-weight: 900;
+    font-size: 250px;
+    z-index: 999999999999999999999999999999999;
+    text-transform: uppercase;
+    font-style: italic;
+    color: White;
+    letter-spacing: 0.05em;
+    display: inline-block;
+  }
+  
+  /* We create a pseudo element and blur it using the SVG filter. We’ll grab the content from the custom HTML attribute. */
+  
+#page4   span:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99999999999999999999999999999999;
+    content: attr(filter-content);
+  
+    filter: url(#motion-blur-filter);
+  }
+  
+  /* We hide the SVG filter element from the DOM as it would take up some space */
+  
+#page4  svg {
+    display: none;
+  }
+
+  .footer{
+    height: 70vh;
+    width: 100vw;
+    background-color:#F7F7F7;
+    top: 110vh;
+    font-family: helvetica;
+    z-index: 999999;
+ }
+ .footer-1{
+    height: 22%;
+    width: 100%;
+    border-top: 1px solid #dfdede;
+    border-bottom: 1px solid #dfdede;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+ }
+ .footer-part{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+ }
+ .footer-part img{
+    height: 5vw;
+    width: 2vw;
+ }
+ .footer-part h4{
+    font-size: 0.8vw;
+    font-weight: 100;
+    /* font-family: font; */
+    margin-top: -1vw;
+ }
+ .footer-2{
+    height: 62%;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content:center;
+    gap: 7vw;
+ }
+ .footer-content{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3vw;
+ }
+ .footer-2 h4{
+    font-size: 1.1vw;
+    font-weight: 100;
+    /* font-family: nike; */
+    text-transform: capitalize;
+    cursor: pointer;
+ }
+ .content{
+    margin-top: 1.5vw;
+ }
+ .content h4{
+    font-size: 0.9vw;
+    font-weight: 100;
+    /* font-family: font; */
+    margin-bottom: 0.7vw;
+ }
+ .footer-3{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30vw;
+    border-top: 0.1px solid #e4e2e2;
+ }
+ .footer-3 h4{
+    font-size: 1vw;
+    /* font-family: nike; */
+    font-weight: 100;
+    cursor: pointer;
+    transition: all ease 0.5s;
+ }
+ .footer-3 h4:hover{
+    text-decoration: underline;
+ }
+ .footer-3 p{
+    font-size: 0.85vw;
+    /* font-family: font; */
+    font-weight: 100;
+    cursor: pointer;
+ }
+ .footer-4{
+    display: none;
+ }

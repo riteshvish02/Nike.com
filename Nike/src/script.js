@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
 const totalItems = 7;
 const loadingBarElement  = document.querySelector('.loadingbar')
+const loadingBarElementh2  = document.querySelector('.loadingbar h2')
 const loadingManager = new THREE.LoadingManager(
     // Loaded
     () =>
@@ -13,7 +14,7 @@ const loadingManager = new THREE.LoadingManager(
             gsap.to('.loader', { display: 'none' });
             // Animate overlay
 
-        }, 1500)
+        }, 1000)
 
       
     },
@@ -25,10 +26,11 @@ const loadingManager = new THREE.LoadingManager(
 
         // Calculate the progress and update the loadingBarElement
         const progressRatio = itemsLoaded / totalItems;
-        const progressPercentage = (itemsLoaded / totalItems) * 100;
-        console.log(progressRatio, progressPercentage.toFixed());
+        const progressPercentage =( (itemsLoaded / totalItems) * 100).toFixed();
+        // console.log(progressRatio, progressPercentage.toFixed());
     
         loadingBarElement.style.transform = `scaleX(${progressRatio})`;
+         loadingBarElementh2.textContent = progressPercentage + "%"
     }
 )
 const gltfLoader = new GLTFLoader(loadingManager)
@@ -589,3 +591,94 @@ document.addEventListener("DOMContentLoaded",function(){
         update()
     })
  })
+
+function page3() {
+    const itemsArray = [];
+ const cursor = document.querySelector("#page4 .cursor");
+ document.querySelector('#page4').addEventListener("mousemove", (e) => {
+    gsap.to(cursor,{
+        display:"flex",
+        left:`${e.clientX - 35}`,
+        top:`${e.clientY - 35}`,
+      })
+ })
+
+document.querySelector("#page4").addEventListener("click",function(event){
+    const itemType = Math.random() > 0.5 ? "video" : "image";
+    let container = document.createElement("div");
+    let elementWidth = 700;
+    if(itemType === "video"){
+        const videoNumber = Math.floor(Math.random() * 6) + 1;
+        container.innerHTML = `<div class="video-container">
+                                   <video autoplay loop muted>
+                                       <source src="/assets/images-videos/video-${videoNumber}.mp4" type="video/mp4" />
+                                    </video>
+                                </div>`;
+    }
+    else{
+        const imgNumber = Math.floor(Math.random() * 6) + 1;
+        container.innerHTML = `<div class="img-container">
+                                     <img src="/assets/images-videos/image-${imgNumber}.jpg" alt="" />
+                                </div>`;
+    }
+    console.log(container);
+    const appendedElement = container.firstChild;
+    document.querySelector("#page4 .items-container").appendChild(appendedElement);
+    appendedElement.style.left = `${event.clientX - elementWidth / 2}px`;
+    appendedElement.style.top = `${event.clientY}px`;
+    const randomRotation = Math.random() * 10 -5;
+    gsap.to(appendedElement,{
+        scale:0,
+        rotation:randomRotation,
+        transformOrigin:"center",
+    })
+    const tl = gsap.timeline();
+    const randomScale = Math.random() * 0.5 + 0.5;
+    tl.to(appendedElement,{
+        scale:randomScale,
+        duration:0.5,
+        delay:0.1,
+    })
+    tl.to(appendedElement,{
+        y: () => `-=500`,
+        opacity:1,
+        duration:4,
+        ease:"none",
+    },
+    "<"
+    ).to(appendedElement,{
+        opacity:0,
+        duration:1,
+        onComplete: () => {
+            appendedElement.parentNode.removeChild(appendedElement);
+            const index = itemsArray.indexOf(appendedElement);
+            if(index > -1){
+                itemsArray.splice(index,1);
+            }
+        },
+    },
+    "-=0.5"
+    )
+})
+
+}
+page3()
+
+
+const target = document.getElementById('shimmerWave');
+function splitTextToSpans(targetElement) {
+    if (targetElement) {
+        const text = targetElement.textContent;
+        targetElement.innerHTML = '';
+        for (let character of text) {
+            const span = document.createElement('span');
+            if (character === ' ') {
+                span.innerHTML = '&nbsp;';
+            } else {
+                span.textContent = character;
+            }
+            targetElement.appendChild(span);
+        }
+    }
+}
+splitTextToSpans(target);
