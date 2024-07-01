@@ -684,7 +684,7 @@ function splitTextToSpans(targetElement) {
 splitTextToSpans(target);
 
 
-document.addEventListener("DOMContentLoaded", function () {
+function menubar(){
     const menuOpen = document.querySelectorAll(".menu-open");
     const menuClose = document.querySelectorAll(".menu-close");
     menuOpen.forEach((item)=>{
@@ -754,7 +754,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeMenu = () => {
         gsap.to('.menu', {
             clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-
+            background:"red",
             pointerEvents: "none",
             duration: 1.25,
             ease: defaultEase,
@@ -786,4 +786,6 @@ gsap.to('.menu',{
             }
         })
     }
-})
+}
+
+menubar()
