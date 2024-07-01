@@ -689,6 +689,7 @@ function menubar(){
     const menuClose = document.querySelectorAll(".menu-close");
     menuOpen.forEach((item)=>{
         item.addEventListener('click', function () {
+            console.log("called");
             if (isOpen) return;
             openMenu();
         });
